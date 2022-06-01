@@ -66,48 +66,11 @@
                         <div class="header-col mid">
                             <!-- mainmenu begin -->
                             <ul id="mainmenu">
-                                <li><a href="index.html">Home<span>New</span></a>
-                                    <ul>
-                                        <li><a href="index.html">Homepage 1</a></li>
-                                        <li><a href="index-2.html">Homepage 2</a></li>
-                                        <li><a href="index-3.html">Homepage 3</a></li>
-                                        <li><a href="index-4.html">Homepage 4</a></li>
-                                        <li><a href="index-5.html">Homepage 5</a></li>
-                                        <li><a href="index-6.html">Homepage 6</a></li>
-                                        <li><a href="index-7.html">Homepage 7</a></li>
-                                        <li><a href="index-8.html">Homepage 8</a></li>
-                                        <li><a href="index-9.html">Homepage 9</a></li>
-                                        <li><a href="index-10.html">Homepage 10<span>New</span></a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="https://hostingtheme.net/whmcs/index.php">WHMCS</a></li>
-                                <li><a href="#">Hosting</a>
-                                    <ul>
-                                        <li><a href="hosting-all.html">All Plans</a></li>
-                                        <li><a href="hosting-dedicated.html">Dedicated Hosting<span>New</span></a></li>
-                                        <li><a href="hosting-shared.html">Shared Hosting<span>5% OFF</span></a></li>
-                                        <li><a href="hosting-vps.html">VPS Hosting<span>5% OFF</span></a></li>
-                                        <li><a href="hosting-cloud.html">Cloud Hosting<span>5% OFF</span></a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Pages</a>
-                                    <ul>
-                                        <li><a href="website-builder.html">Builder</a></li>
-                                        <li><a href="news.html">News</a></li>
-                                        <li><a href="search-results.html">Search Results</a></li>
-                                        <li><a href="features.html">Features</a></li>
-                                        <li><a href="maintenance.html">Maintenance</a></li>
-                                        <li><a href="icons-elegant.html">Elegant Icons</a></li>
-                                        <li><a href="icons-etline.html">Etline Icons</a></li>
-                                        <li><a href="icons-fontawesome.html">Font Awesome Icons</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="domain.html">Domain</a></li>
-                                <li><a href="faq.html">FAQ</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="{{route('welcome')}}">Home</a></li>
+                                <li><a href="{{route('pricing')}}">Pricing</a></li>
                             </ul>
                             <div class="col-right">
-                                <a class="btn-custom" href="https://hostingtheme.net/whmcs/clientarea.php"><i class="fa fa-lock"></i> Login</a>
+                                <a class="btn-custom" href="{{route('convert')}}"><i class="fa fa-recycle"></i> Convert</a>
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -133,56 +96,7 @@
 
                 <div class="col-md-8">
                     <div class="row">
-                        <div class="col-md-4 col-xs-4">
-                            <div class="widget">
-                                <h5>Hosting</h5>
-                                <div class="tiny-border"></div>
-                                <ul>
-                                    <li><a href="#">Web Hosting</a></li>
-                                    <li><a href="#">VPS Hosting</a></li>
-                                    <li><a href="#">Cloud Hosting</a></li>
-                                    <li><a href="#">WordPress Hosting</a></li>
-                                    <li><a href="#">Email Hosting</a></li>
-                                    <li><a href="#">CMS Hosting</a></li>
-                                    <li><a href="#">Ecommerce Hosting</a></li>
-                                    <li><a href="#">Website Builder</a></li>
-                                </ul>
-                            </div>
-                        </div>
 
-                        <div class="col-md-4 col-xs-4">
-                            <div class="widget">
-                                <h5>Domains</h5>
-                                <div class="tiny-border"></div>
-                                <ul>
-                                    <li><a href="#">Domain Checker</a></li>
-                                    <li><a href="#">Domain Transfer</a></li>
-                                    <li><a href="#">Free Domain</a></li>
-                                    <li><a href="#">XYZ Domain</a></li>
-                                    <li><a href="#">Cheap SSL Certificate</a></li>
-                                    <li><a href="#">Buy Domain Name</a></li>
-                                    <li><a href="#">Whois Checker</a></li>
-                                    <li><a href="#">Free SSL Certificate</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-xs-4">
-                            <div class="widget">
-                                <h5>Company</h5>
-                                <div class="tiny-border"></div>
-                                <ul>
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">Affiliates</a></li>
-                                    <li><a href="#">Blog</a></li>
-                                    <li><a href="#">Careers</a></li>
-                                    <li><a href="#">Community</a></li>
-                                    <li><a href="#">News</a></li>
-                                    <li><a href="#">Partners</a></li>
-                                    <li><a href="#">Press Releases</a></li>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                 </div>
 

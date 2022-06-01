@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,12 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name("welcome");
 
 Route::get('/pricing', function () {
     return view('pricing');
-});
+})->name('pricing');
 
 Route::get('/convert', function () {
     return view('convert');
-});
+})->name('convert');
+
+Route::post('/convert', [MyController::class, 'convert'])->name('submitconvert');
