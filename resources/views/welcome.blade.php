@@ -18,7 +18,7 @@
                             Convert your website to an app &lt;/without coding&gt; online & within a minute.
                         </div>
                         <div class="tp-caption tp-text text-left" data-height="none" data-responsive_offset="on" data-splitin="none" data-splitout="none" data-start="1300" data-transform_in="y:100px;opacity:0;s:800;e:Power2.easeOut;" data-transform_out="opacity:0;y:30;s:700;e:Power2.easeInOut;" data-whitespace="nowrap" data-width="none" data-x="600" data-y="380">
-                            <a class="btn-slider" href="domain.html">Convert Website Now</a>
+                            <a class="btn-slider" href="{{route('convert')}}">Convert Website Now</a>
                         </div>
                         <div class="tp-caption tp-text text-left" data-height="none" data-responsive_offset="on" data-splitin="none" data-splitout="none" data-start="1000" data-transform_in="y:100;s:0;opacity:0;s:800;e:Power2.easeOut;" data-transform_out="opacity:0;y:0;s:700;e:Power2.easeInOut;" data-whitespace="nowrap" data-width="none" data-x="0" data-y="bottom">
                             <img src="images/slider/server-2.png" alt="">

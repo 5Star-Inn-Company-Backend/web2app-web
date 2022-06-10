@@ -26,4 +26,8 @@ Route::get('/convert', function () {
     return view('convert');
 })->name('convert');
 
+Route::get('/payment', function () {
+    return view('payment');
+})->name('payment');
+
 Route::post('/convert', [MyController::class, 'convert'])->name('submitconvert');
