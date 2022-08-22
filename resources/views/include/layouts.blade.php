@@ -17,31 +17,32 @@
 
     <!-- CSS Files
     ================================================== -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="css/bootstrap-grid.min.css" rel="stylesheet" type="text/css">
-    <link href="css/bootstrap-reboot.min.css" rel="stylesheet" type="text/css">
-    <link href="css/animate.css" rel="stylesheet" type="text/css">
-    <link href="css/owl.carousel.css" rel="stylesheet" type="text/css">
-    <link href="css/owl.theme.css" rel="stylesheet" type="text/css">
-    <link href="css/owl.transitions.css" rel="stylesheet" type="text/css">
-    <link href="css/magnific-popup.css" rel="stylesheet" type="text/css">
-    <link href="css/jquery.countdown.css" rel="stylesheet" type="text/css">
-    <link href="fonts/font-awesome-5/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="fonts/font-awesome-4/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="fonts/font-awesome-5/css/fontawesome.min.css" rel="stylesheet" type="text/css">
-    <link href="fonts/elegant_font/HTML_CSS/style.css" rel="stylesheet" type="text/css">
-    <link href="fonts/et-line-font/style.css" rel="stylesheet" type="text/css">
-    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/bootstrap-grid.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/bootstrap-reboot.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/animate.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/owl.carousel.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/owl.theme.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/owl.transitions.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/magnific-popup.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/jquery.countdown.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('fonts/font-awesome-5/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('fonts/font-awesome-4/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('fonts/font-awesome-5/css/fontawesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('fonts/elegant_font/HTML_CSS/style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('fonts/et-line-font/style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
 
     <!-- color scheme -->
-    <link id="colors" href="css/colors/scheme-07.css" rel="stylesheet" type="text/css">
-    <link href="css/coloring.css" rel="stylesheet" type="text/css">
+    <link id="colors" href="{{ asset('css/colors/scheme-07.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/coloring.css') }}" rel="stylesheet" type="text/css">
 
     <!-- RS5.0 Stylesheet -->
-    <link href="revolution/css/settings.css" rel="stylesheet" type="text/css">
-    <link href="revolution/css/layers.css" rel="stylesheet" type="text/css">
-    <link href="revolution/css/navigation.css" rel="stylesheet" type="text/css">
-    <link href="css/rev-settings.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('revolution/css/settings.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('revolution/css/layers.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('revolution/css/navigation.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/rev-settings.css') }}" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -67,6 +68,7 @@
                             <!-- mainmenu begin -->
                             <ul id="mainmenu">
                                 <li><a href="{{route('welcome')}}">Home</a></li>
+                                <li><a href="{{ route('showstore') }}">Store</a></li>
                                 <li><a href="{{route('pricing')}}">Pricing</a></li>
                             </ul>
                             <div class="col-right">
@@ -162,35 +164,35 @@
 
 <!-- Javascript Files
 ================================================== -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/wow.min.js"></script>
-<script src="js/jquery.isotope.min.js"></script>
-<script src="js/easing.js"></script>
-<script src="js/owl.carousel.js"></script>
-<script src="js/validation.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/enquire.min.js"></script>
-<script src="js/jquery.stellar.min.js"></script>
-<script src="js/jquery.plugin.js"></script>
-<script src="js/typed.js"></script>
-<script src="js/jquery.countTo.js"></script>
-<script src="js/jquery.countdown.js"></script>
-<script src="js/designesia.js"></script>
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/wow.min.js') }}"></script>
+<script src="{{ asset('js/jquery.isotope.min.js') }}"></script>
+<script src="{{ asset('js/easing.js') }}"></script>
+<script src="{{ asset('js/owl.carousel.js') }}"></script>
+<script src="{{ asset('js/validation.js') }}"></script>
+<script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ asset('js/enquire.min.js') }}"></script>
+<script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
+<script src="{{ asset('js/jquery.plugin.js') }}"></script>
+<script src="{{ asset('js/typed.js') }}"></script>
+<script src="{{ asset('js/jquery.countTo.js') }}"></script>
+<script src="{{ asset('js/jquery.countdown.js') }}"></script>
+<script src="{{ asset('js/designesia.js') }}"></script>
 
 <!-- RS5.0 Core JS Files -->
-<script src="revolution/js/jquery.themepunch.tools.min838f.js?rev=5.0"></script>
-<script src="revolution/js/jquery.themepunch.revolution.min838f.js?rev=5.0"></script>
+<script src="{{ asset('') }}revolution/js/jquery.themepunch.tools.min838f.js?rev=5.0"></script>
+<script src="{{ asset('') }}revolution/js/jquery.themepunch.revolution.min838f.js?rev=5.0"></script>
 
 <!-- RS5.0 Extensions Files -->
-<script src="revolution/js/extensions/revolution.extension.video.min.js"></script>
-<script src="revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-<script src="revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-<script src="revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-<script src="revolution/js/extensions/revolution.extension.actions.min.js"></script>
-<script src="revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-<script src="revolution/js/extensions/revolution.extension.migration.min.js"></script>
-<script src="revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<script src="{{ asset('revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
+<script src="{{ asset('revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
+<script src="{{ asset("revolution/js/extensions/revolution.extension.layeranimation.min.js") }}"></script>
+<script src="{{ asset("revolution/js/extensions/revolution.extension.navigation.min.js") }}"></script>
+<script src="{{ asset("revolution/js/extensions/revolution.extension.actions.min.js") }}"></script>
+<script src="{{ asset("revolution/js/extensions/revolution.extension.kenburn.min.js") }}"></script>
+<script src="{{ asset("revolution/js/extensions/revolution.extension.migration.min.js") }}"></script>
+<script src="{{ asset("revolution/js/extensions/revolution.extension.parallax.min.js") }}"></script>
 <!-- current page only scripts -->
 
 <script>

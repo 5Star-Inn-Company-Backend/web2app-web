@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\MyController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MyController;
+use App\Http\Controllers\StoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,4 +31,22 @@ Route::get('/payment', function () {
     return view('payment');
 })->name('payment');
 
+Route::get('/success', function () {
+    return view('successpage');
+})->name('success');
+
+
+//for the store
+
+Route::get('/createstore', function () {
+    return view('createstore');
+})->name('createstore');
+
 Route::post('/convert', [MyController::class, 'convert'])->name('submitconvert');
+Route::post('/store', [StoreController::class, 'addstore'])->name('submitstore');
+Route::get('/showstore', [StoreController::class, 'showstore'])->name('showstore');
+Route::get('/viewstore/{id}', [StoreController::class, 'viewstore'])->name('viewstore');
+//for success page
+Route::get('/successpage/{id}', [MyController::class, 'success'])->name('successpage');
+//for payment
+Route::post('purchase', [StoreController::class, 'purchase']);

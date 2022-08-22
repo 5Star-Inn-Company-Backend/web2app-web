@@ -13,6 +13,7 @@ class MyController extends Controller
     {
         $con = new convert;
         $con->url = $request->url;
+        $con->email = $request->email;
         $con->plan = $request->plan;
 // $con->plan1 = $request->plan1;
 // $con->plan2 = $request->plan2;
@@ -24,14 +25,15 @@ class MyController extends Controller
         $con->packagename = $request->packagename ?? 'com.web2app';
         $con->admob = $request->admob;
         $con->admobID = $request->admobID ?? '3636363';
+        $con->status = '0';
+        $con->reference_code = "prisca_" . rand();
         $con->save();
-
 
         $input = $request->all();
 // dd($input);
         $validator = Validator::make($request->all(), [
             'url' => 'required|max:255',
-            'plan' => 'required'
+            'plan' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -46,7 +48,7 @@ class MyController extends Controller
         } else {
             $amount = 100;
         }
-        $reference = "prisca_" . rand();
+        $reference = $con->reference_code;
         // <?php
 
         $curl = curl_init();
@@ -62,18 +64,18 @@ class MyController extends Controller
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => '{
     "amount": ' . $amount . ',
-    "redirect_url": "https://web.postman.co/workspace/My-Workspace~342a36de-268d-43fd-8714-fbc242b7ea70/request/create?requestId=c4c5672f-f0d1-49d5-baf1-cc4c3008664f",
+    "redirect_url": " ' . url("/successpage" . '/' . $con->id) . ' ",
     "currency": "NGN",
     "reference": "' . $reference . '",
     "customer" : {
-        "email" : "prisca@gmail.com"
+        "email" : " ' . $request->email . ' "
     }
 
 
 }',
             CURLOPT_HTTPHEADER => array(
                 'Authorization: Bearer sk_test_9YusxDq7qXi2sksYvQENTCCCQVDpoujZpRbVMbUG',
-                'Content-Type: application/json'
+                'Content-Type: application/json',
             ),
         ));
 
@@ -82,23 +84,23 @@ class MyController extends Controller
         curl_close($curl);
 
         echo $response;
-// dd($response);
+//  dd($response);
         $ref = json_decode($response, true);
         if ($ref['status']) {
             return redirect()->away($ref["data"]["checkout_url"]);
+
         }
 
         return $input;
 
-
     }
 
-    function encryptdata($plain, $aeskey, $ivkey)
+    public function encryptdata($plain, $aeskey, $ivkey)
     {
         return bin2hex(openssl_encrypt($plain, "aes-128-cbc", $aeskey, OPENSSL_RAW_DATA, $ivkey));
     }
 
-    function decryptdata($encriptedData, $aeskey, $ivkey)
+    public function decryptdata($encriptedData, $aeskey, $ivkey)
     {
         $ciphertext = hex2bin($encriptedData);
         return openssl_decrypt($ciphertext, "aes-128-cbc", $aeskey, OPENSSL_RAW_DATA, $ivkey);
@@ -115,5 +117,11 @@ class MyController extends Controller
         return view('create', compact('banks'));
     }
 
+//for success page
 
+    public function success($id)
+    {
+        $convert = convert::where('id', $id)->first();
+        return view('successpage', compact('convert'));
+    }
 }

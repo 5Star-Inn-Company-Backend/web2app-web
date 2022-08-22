@@ -16,6 +16,7 @@ class CreateConvertsTable extends Migration
         Schema::create('converts', function (Blueprint $table) {
             $table->id();
             $table->string('url');
+            $table->string('email');
             $table->string('plan');
             // $table->string('plan1');
             // $table->string('plan2');
@@ -27,7 +28,8 @@ class CreateConvertsTable extends Migration
             $table->string('packagename');
             $table->string('admob');
             $table->string('admobID');
-            // $table->string('fullscreen');
+            $table->string('status')->default('0');
+            $table->string('reference_code');
             $table->timestamps();
         });
     }

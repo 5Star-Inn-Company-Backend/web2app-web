@@ -11,6 +11,7 @@ class convert extends Model
 
     protected $fillable = [
         'url',
+        'email',
         'plan',
         // 'plan1',
         // 'plan2',
@@ -22,5 +23,7 @@ class convert extends Model
         'packagename',
         'admob',
         'admobID',
+        'status',
+        'reference_code',
     ];
 }
