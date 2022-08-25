@@ -165,7 +165,7 @@ class StartBuildJob implements ShouldQueue
 
             $app_config=base64_encode($config);
 
-            $input['reference']=$reference;
+            $input['reference_code']=$reference;
             $input['config']=$app_config;
             $build=Build::create($input);
 
@@ -180,6 +180,7 @@ class StartBuildJob implements ShouldQueue
                 CURLOPT_FOLLOWLOCATION => true,
                 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                 CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_SSL_VERIFYPEER => false,
                 CURLOPT_POSTFIELDS => '{
     "appId": "62e4fc24f9c684a19c46b49d",
     "workflowId": "62e4fc24f9c684a19c46b49c",
@@ -209,7 +210,9 @@ class StartBuildJob implements ShouldQueue
             $response = curl_exec($curl);
 
             curl_close($curl);
-            echo $response;
+//            echo $response;
+
+//            dd($response);
 
 //        {"buildId":"5fabc6414c483700143f4f92"}
 

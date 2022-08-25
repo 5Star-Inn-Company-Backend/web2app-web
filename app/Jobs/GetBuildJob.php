@@ -45,50 +45,55 @@ class GetBuildJob implements ShouldQueue
 
             $build=Build::where(['reference_code' => $reference])->first();
 
-            $curl = curl_init();
+            if($build){
+                $curl = curl_init();
 
-            curl_setopt_array($curl, array(
-                CURLOPT_URL => 'https://api.codemagic.io/builds/'.$build->build_id,
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => '',
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 0,
-                CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => 'GET',
-                CURLOPT_HTTPHEADER => array(
-                    'x-auth-token: ' . env('BUILD_APIKEY')
-                ),
-            ));
+                curl_setopt_array($curl, array(
+                    CURLOPT_URL => 'https://api.codemagic.io/builds/'.$build->build_id,
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => '',
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => 'GET',
+                    CURLOPT_SSL_VERIFYPEER => false,
+                    CURLOPT_HTTPHEADER => array(
+                        'x-auth-token: ' . env('BUILD_APIKEY')
+                    ),
+                ));
 
-            $response = curl_exec($curl);
+                $response = curl_exec($curl);
 
-            curl_close($curl);
-            echo $response;
+                curl_close($curl);
+//                echo $response;
 
-            $resp=json_decode($response, true);
+                $resp=json_decode($response, true);
 
-            $build->server_response=$response;
+                $build->server_response=$response;
+
+                $android="";
+                $ios="";
 
 
-            foreach ($resp['build']['artefacts'] as $artefact){
-                if($artefact['type'] == "apk") {
-                    $android = $artefact['url'];
+                foreach ($resp['build']['artefacts'] as $artefact){
+                    if($artefact['type'] == "apk") {
+                        $android = $artefact['url'];
+                    }
+
+                    if($artefact['type'] == "ios") {
+                        $ios = $artefact['url'];
+                    }
                 }
 
-                if($artefact['ios'] == "ios") {
-                    $ios = $artefact['url'];
-                }
+                $build->android_link=$android;
+                $build->ios_link=$ios;
+                $build->status=1;
+                $build->save();
+
+                Mail::to($conv->email)->send(new AppReadyMail($reference, $android));
             }
-
-            $build->android_link=$android;
-            $build->ios_link=$ios;
-            $build->status=1;
-            $build->save();
-
-            Mail::to($conv->email)->send(new AppReadyMail($reference, $android));
         }
-
     }
 }
 

@@ -22,5 +22,5 @@ Route::get('build/{reference}', function ($reference){
 
     \App\Jobs\GetBuildJob::dispatch($reference);
 
-    return response()->json(['success'=>true]);
+    return response()->json(['success'=>true, 'message'=>$reference]);
 });

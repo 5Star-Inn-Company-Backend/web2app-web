@@ -136,10 +136,12 @@ class MyController extends Controller
             return redirect()->route('welcome');
         }
 
-        $convert->status=1;
-        $convert->save();
+        if($convert->status == 0) {
+            $convert->status = 1;
+            $convert->save();
 
-        StartBuildJob::dispatch($input['reference']);
+            StartBuildJob::dispatch($input['reference']);
+        }
 
         return view('successpage', ['reference' => $input['reference']]);
     }
