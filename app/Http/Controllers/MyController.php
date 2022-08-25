@@ -50,6 +50,8 @@ class MyController extends Controller
             $amount = 20000;
         } else {
             $amount = 0;
+
+            return redirect()->to("successpage/".$con->id."?".$con->reference_code);
         }
 
         $reference = $con->reference_code;
@@ -136,12 +138,12 @@ class MyController extends Controller
             return redirect()->route('welcome');
         }
 
-        if($convert->status == 0) {
-            $convert->status = 1;
-            $convert->save();
-
-            StartBuildJob::dispatch($input['reference']);
-        }
+//        if($convert->status == 0) {
+//            $convert->status = 1;
+//            $convert->save();
+//
+//            StartBuildJob::dispatch($input['reference']);
+//        }
 
         return view('successpage', ['reference' => $input['reference']]);
     }

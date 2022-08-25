@@ -82,12 +82,12 @@
                                                         class="with-gap radio-col-info" value="premium">
                                                 </div>
 
-                                                <div class="ext">
-                                                    <h4>Free trial</h4>
-                                                    ₦0
-                                                    <input name="plan" type="radio" id="radio_35"
-                                                        class="with-gap radio-col-warning" value="free">
-                                                </div>
+{{--                                                <div class="ext">--}}
+{{--                                                    <h4>Free trial</h4>--}}
+{{--                                                    ₦0--}}
+{{--                                                    <input name="plan" type="radio" id="radio_35"--}}
+{{--                                                        class="with-gap radio-col-warning" value="free">--}}
+{{--                                                </div>--}}
                                             </div>
 
                                             <div class="spacer-20"></div>
