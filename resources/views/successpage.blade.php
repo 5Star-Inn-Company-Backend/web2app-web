@@ -23,7 +23,7 @@
                             <div class="box-highlight s2 text-center mb40">
                                 <div class="heading"><h3>Hurray!!!</h3></div>
                                 <div class="content v1">
-                                    <p>Hurray, we have received your conversion request and it is currently being handled by our system, you will receive email has soon the app is ready. Below is your Reference Code</p>
+                                    <p>Hurray, we have received your conversion request and it is currently being handled by our system, you will receive email as soon as the app is ready. Below is your Reference Code</p>
                                     <div class="spacer-10"></div>
                                     <strong>{{$reference}}</strong>
                                     <div class="spacer-30"></div>
