@@ -31,6 +31,6 @@ class AppReadyMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.app_ready')->subject("App is Ready!! ".$this->reference)->attach($this->fileurl);
+        return $this->markdown('emails.app_ready')->with(['apk' => $this->fileurl])->subject("App is Ready!! ".$this->reference);
     }
 }
