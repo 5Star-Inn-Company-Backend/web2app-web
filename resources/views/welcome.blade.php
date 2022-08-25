@@ -71,7 +71,7 @@
                             Web<span class="id-color-2">2</span>App
                         </div>
                         <div class="tp-caption custom-font-1" data-height="none" data-responsive_offset="on" data-splitin="none" data-splitout="none" data-start="700" data-transform_in="y:-100px;opacity:0;s:800;e:Power2.easeOut;" data-transform_out="opacity:0;y:-20;s:700;e:Power2.easeInOut;" data-whitespace="wrap" data-width="550" data-x="0" data-y="center">
-                            Create App online without coding experience for your website in less than 5 minutes.
+                            Create App online without coding experience for your website in less than 10 minutes.
                         </div>
                         <div class="tp-caption tp-text text-left" data-height="none" data-responsive_offset="on" data-splitin="none" data-splitout="none" data-start="1300" data-transform_in="y:100px;opacity:0;s:800;e:Power2.easeOut;" data-transform_out="opacity:0;y:30;s:700;e:Power2.easeInOut;" data-whitespace="nowrap" data-width="none" data-x="0" data-y="380">
                             <a class="btn-slider" href="{{route('convert')}}">Convert Website Now</a>
@@ -481,7 +481,7 @@
                                     When will my application be ready?
                                 </div>
                                 <div class="accordion-section-content" id="accordion-b-4">
-                                    <p>Your app will be ready in 5 minutes</p>
+                                    <p>Your app will be ready in 10 minutes</p>
                                 </div>
                                 <div class="accordion-section-title" data-tab="#accordion-b-5">
                                     How many times do I have to pay?
