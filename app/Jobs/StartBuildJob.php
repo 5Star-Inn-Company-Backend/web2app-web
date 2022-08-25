@@ -40,13 +40,15 @@ class StartBuildJob implements ShouldQueue
         $conv=convert::where(['reference_code' => $reference, 'status' => 1])->first();
 
         if($conv){
+            $fullscreen=strtolower($conv->fullscreen) == 'no' ? "false" : "true";
+
             $config='{
   "public": {
     "appName": "'.$conv->appname.'",
     "initialUrl": "'.$conv->url.'",
     "userAgent": "web2app",
     "primaryColor": "'.$conv->primarycolor.'",
-    "fullScreen": '.strtolower($conv->fullscreen) == "no" ? false : true.',
+    "fullScreen": '.$fullscreen.',
     "forceScreenOrientation": false
   },
   "navigations": {
