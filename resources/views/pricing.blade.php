@@ -50,9 +50,9 @@
                                         <p class="price">
 {{--                                            <span class="txt">Start from</span>--}}
                                             <span class="currency">₦</span>
-                                            <span class="m opt-1">20,550</span>
-                                            <span class="y opt-2">20,550</span>
-                                            <span class="month">$50</span>
+                                            <span class="m opt-1">5,000</span>
+                                            <span class="y opt-2">5,000</span>
+                                            <span class="month">$10</span>
                                         </p>
                                     </div>
 
@@ -71,7 +71,7 @@
                                     </div>
 
                                     <div class="action">
-                                        <a href="#" class="btn-custom">Sign Up Now</a>
+                                        <a href="{{route('convert')}}" class="btn-custom">Convert Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -82,9 +82,9 @@
                                         <p class="price">
 {{--                                            <span class="txt">Start from</span>--}}
                                             <span class="currency">₦</span>
-                                            <span class="m opt-1">45,200</span>
-                                            <span class="y opt-2">45,200</span>
-                                            <span class="month">$110</span>
+                                            <span class="m opt-1">10,000</span>
+                                            <span class="y opt-2">10,000</span>
+                                            <span class="month">$20</span>
                                         </p>
                                     </div>
                                     <div class="bottom">
@@ -102,7 +102,7 @@
                                     </div>
 
                                     <div class="action">
-                                        <a href="#" class="btn-custom">Sign Up Now</a>
+                                        <a href="{{route('convert')}}" class="btn-custom">Convert Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -113,9 +113,9 @@
                                         <p class="price">
 {{--                                            <span class="txt">Start from</span>--}}
                                             <span class="currency">₦</span>
-                                            <span class="m opt-1">82,180</span>
-                                            <span class="y opt-2">82,180</span>
-                                            <span class="month">$200</span>
+                                            <span class="m opt-1">20,000</span>
+                                            <span class="y opt-2">20,000</span>
+                                            <span class="month">$40</span>
                                         </p>
                                     </div>
                                     <div class="bottom">
@@ -134,7 +134,7 @@
                                     </div>
 
                                     <div class="action">
-                                        <a href="#" class="btn-custom">Sign Up Now</a>
+                                        <a href="{{route('convert')}}" class="btn-custom">Convert Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -204,30 +204,6 @@
 {{--                </div>--}}
 {{--            </div>--}}
 {{--        </section>--}}
-
-        <section id="section-banner" class="no-bottom no-top img-fluid bg-gradient-to-right text-light relative pos-top">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 d-none d-lg-block d-xl-block  text-center">
-                        <img class="relative img-fluid mt-60" src="images/misc/1.png" alt="">
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="p-sm-30 pb-sm-0 mb-sm-0">
-                            <h2>30 days money back satisfaction guarantee</h2>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="p-sm-30">
-                            <p class="lead">If you not satisfy with Uhost, we will refund your payment. No hassle, no risk. You can cancel plan at any time.</p>
-                            <div class="spacer-half"></div>
-                            <a class="btn-custom" href="#">Get Started</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </div>
     <!-- content close -->
 @endsection

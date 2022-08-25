@@ -4,15 +4,15 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Uhost - Hosting Website Template</title>
-    <link rel="icon" href="images/icon.png" type="image/gif" sizes="24x24">
+    <title>Web2App</title>
+    <link rel="icon" href="/images/w2a.jpg" type="image/gif" sizes="24x24">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Uhost is Creative Website Template" name="description">
-    <meta content="" name="keywords">
-    <meta content="" name="author">
+    <meta content="Convert your website to an app &lt;/without coding&gt; online & within a minute" name="description">
+    <meta content="web2app" name="keywords">
+    <meta content="5star inn company" name="author">
 
     <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
+    <script src="/js/html5shiv.js"></script>
     <![endif]-->
 
     <!-- CSS Files
@@ -60,7 +60,7 @@
                         <div class="header-col left">
                             <!-- logo begin -->
                             <div id="logo">
-                                <a href="index.html"><img alt="" class="logo" src="images/logo-light.png"> <img alt="" class="logo-2" src="images/logo-dark.png"></a>
+                                <a href="/"><img alt="" class="logo" src="/images/w2a.jpg" width="50px" height="50px"> <img alt="" class="logo-2" src="images/logo-dark.png"></a>
                             </div>
                             <!-- logo close -->
                         </div>
@@ -68,7 +68,7 @@
                             <!-- mainmenu begin -->
                             <ul id="mainmenu">
                                 <li><a href="{{route('welcome')}}">Home</a></li>
-                                <li><a href="{{ route('showstore') }}">Store</a></li>
+{{--                                <li><a href="{{ route('showstore') }}">Store</a></li>--}}
                                 <li><a href="{{route('pricing')}}">Pricing</a></li>
                             </ul>
                             <div class="col-right">
@@ -104,7 +104,7 @@
 
                 <div class="col-md-4">
                     <div class="widget">
-                        <a href="index.html"><img alt="" class="logo" src="images/logo-light.png"></a>
+                        <a href="/"><img alt="" class="logo" src="/images/w2a.jpg" width="50px" height="50px"></a>
                         <div class="spacer-20"></div>
                         <p>Web2App offer service that converts your website into a fully functional mobile app for Android, IOS, Windows, Linux in 5 minutes. We are here to solve the problem of mobile app development complexity.</p>
                     </div>
@@ -119,8 +119,8 @@
 
                 <div class="col-md-6 text-md-right text-sm-left">
                     <div class="social-icons">
-                        <a href="#"><i class="fa fa-facebook fa-lg"></i></a>
-                        <a href="#"><i class="fa fa-envelope fa-lg"></i></a>
+                        <a href="https://facebook.com/5starcompany"><i class="fa fa-facebook fa-lg"></i></a>
+                        <a href="mailto:info@5starcompany.com.ng"><i class="fa fa-envelope fa-lg"></i></a>
                     </div>
                 </div>
             </div>
@@ -138,23 +138,23 @@
     </div>
 </div>
 
-<div id="selector">
-    <span class="opt tc1" data-color="scheme-01"></span>
-    <span class="opt tc2" data-color="scheme-02"></span>
-    <span class="opt tc3" data-color="scheme-03"></span>
-    <span class="opt tc4" data-color="scheme-04"></span>
-    <span class="opt tc5" data-color="scheme-05"></span>
-    <span class="opt tc6" data-color="scheme-06"></span>
-    <span class="opt tc7" data-color="scheme-07"></span>
+{{--<div id="selector">--}}
+{{--    <span class="opt tc1" data-color="scheme-01"></span>--}}
+{{--    <span class="opt tc2" data-color="scheme-02"></span>--}}
+{{--    <span class="opt tc3" data-color="scheme-03"></span>--}}
+{{--    <span class="opt tc4" data-color="scheme-04"></span>--}}
+{{--    <span class="opt tc5" data-color="scheme-05"></span>--}}
+{{--    <span class="opt tc6" data-color="scheme-06"></span>--}}
+{{--    <span class="opt tc7" data-color="scheme-07"></span>--}}
 
-    <span id="dark-mode">
-                Enable Dark Mode
-            </span>
+{{--    <span id="dark-mode">--}}
+{{--                Enable Dark Mode--}}
+{{--            </span>--}}
 
-    <span id="related-items">
-                Click For More
-            </span>
-</div>
+{{--    <span id="related-items">--}}
+{{--                Click For More--}}
+{{--            </span>--}}
+{{--</div>--}}
 
 <div id="theme-select-wrapper">
     <div id="theme-select">
@@ -221,21 +221,7 @@
     });
 </script>
 
-<!--Start of Tawk.to Script-->
-<script>
-    var Tawk_API = Tawk_API || {},
-        Tawk_LoadStart = new Date();
-    (function() {
-        var s1 = document.createElement("script"),
-            s0 = document.getElementsByTagName("script")[0];
-        s1.async = true;
-        s1.src = 'https://embed.tawk.to/5e4a18a6298c395d1ce84227/default';
-        s1.charset = 'UTF-8';
-        s1.setAttribute('crossorigin', '*');
-        s0.parentNode.insertBefore(s1, s0);
-    })();
-</script>
-<!--End of Tawk.to Script-->
+
 </body>
 
 

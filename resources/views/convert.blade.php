@@ -13,6 +13,21 @@
                 swal("{{ session('status') }}");
             </script>
         @endif
+
+
+        @if ($errors->any())
+            <div class="alert-danger alert">
+                <div class="font-medium text-red-600">{{ __('Whoops! Something went wrong.') }}
+                </div>
+
+                <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <form action='{{ route('submitconvert') }}' id='form_sb' method="post" name="myForm" enctype="multipart/form-data">
             @csrf
             <section class="relative no-top no-bottom text-light" data-bgimage="url(images/background/6.jpg)"
@@ -34,72 +49,56 @@
 
                                         <div class="col text-center">
                                             <div class="spacer-10"></div>
-                                            <input class="form-control" id='name_1' name='url'
-                                                placeholder="Type your website url here" type='text'> <a id="btn-submit"
-                                                onclick="document.getElementById('form_sb').submit();"><i
-                                                    class="arrow_right"></i></a>
+                                            <input class="form-control form-control-lg" id='appname' name='appname'
+                                                placeholder="App Name" type='text1' required>
                                             <div class="clearfix"></div>
-                                            <div class="spacer-10"></div>
+                                            <div class="spacer-30"></div>
+                                            <input class="form-control form-control-lg" id='url' name='url'
+                                                placeholder="Website URL" type='url' required>
+                                            <div class="clearfix"></div>
+                                            <div class="spacer-30"></div>
+                                            <input class="form-control form-control-lg" id='email' name='email'
+                                                   placeholder="E-mail Address" type='email' required>
+                                            <div class="spacer-20"></div>
                                             <div class="domain-ext">
-                                                <input class="form-control" id='email' name='email'
-                                                    placeholder="Type your E-mail Address" type='email'>
-
-
                                                 <div class="ext">
                                                     <h4>Basic Plan</h4>
-                                                    $50
+                                                    ₦5,000
                                                     <input name="plan" type="radio" id="radio_30"
                                                         class="with-gap radio-col-primary" value="basic" checked="">
                                                 </div>
 
                                                 <div class="ext">
                                                     <h4>Gold Plan</h4>
-                                                    $110
+                                                    ₦10,000
                                                     <input name="plan" type="radio" id="radio_32"
                                                         class="with-gap radio-col-success" value="gold">
                                                 </div>
 
                                                 <div class="ext">
                                                     <h4>Premium Plan</h4>
-                                                    $200
+                                                    ₦20,000
                                                     <input name="plan" type="radio" id="radio_33"
                                                         class="with-gap radio-col-info" value="premium">
                                                 </div>
 
                                                 <div class="ext">
                                                     <h4>Free trial</h4>
-                                                    $0
+                                                    ₦0
                                                     <input name="plan" type="radio" id="radio_35"
                                                         class="with-gap radio-col-warning" value="free">
                                                 </div>
                                             </div>
 
-                                        </div>
+                                            <div class="spacer-20"></div>
 
+                                            <button type="submit" id="btn-submit" class="btn btn-primary btn-group-lg btn-lg">Convert Now</button>
+                                            <br />
+                                            <span class="text-center" style="font-size: 10px"> <i class="fa fa-arrow-circle-o-down"> </i> Do more below</span>
+
+                                        </div>
 
                                     </div>
-
-
-                                    @if (session('status'))
-                                        <div class="mb-1 font-medium text-sm text-green-600">
-                                            {{ session('status') }}
-                                        </div>
-                                    @endif
-
-
-                                    @if ($errors->any())
-                                        <div class="alert-danger alert">
-                                            <div class="font-medium text-red-600">{{ __('Whoops! Something went wrong.') }}
-                                            </div>
-
-                                            <ul class="mt-3 list-disc list-inside text-sm text-red-600">
-                                                @foreach ($errors->all() as $error)
-                                                    <li>{{ $error }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    @endif
-
 
                                     <div class="clearfix"></div>
                                 </div>
@@ -125,12 +124,13 @@
                                     <div class="accordion">
                                         <div class="accordion-section">
                                             <div class="accordion-section-title" data-tab="#accordion-1">
-                                                App Name
+                                                Publish to Store
                                             </div>
                                             <div class="accordion-section-content" id="accordion-1">
-                                                <p>The name to be shown on the app</p>
-                                                <input class="form-control" name='appname' placeholder="Type your app name"
-                                                    type='text'>
+                                                <select name="publish" class="form-control">
+                                                    <option value="no" selected>No</option>
+                                                    <option value="yes">Yes</option>
+                                                </select>
                                             </div>
                                             <div class="accordion-section-title" data-tab="#accordion-2">
                                                 Logo
