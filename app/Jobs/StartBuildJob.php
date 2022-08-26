@@ -191,6 +191,7 @@ class StartBuildJob implements ShouldQueue
         "variables": {
             "APP_CONFIG": "'.$app_config.'",
             "APP_NAME": "'.$conv->appname.'",
+            "APP_PACKAGE_NAME": "'.$conv->packagename.'",
             "APP_REFERENCE": "'.$reference.'",
             "APP_LOGO": "'.$conv->icon.'"
         },
