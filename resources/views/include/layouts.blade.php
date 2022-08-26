@@ -60,7 +60,7 @@
                         <div class="header-col left">
                             <!-- logo begin -->
                             <div id="logo">
-                                <a href="/"><img alt="" class="logo" src="/images/w2a.jpg" width="50px" height="50px"> <img alt="" class="logo-2" src="images/logo-dark.png"></a>
+                                <a href="/"><img alt="" class="logo" src="/images/w2a.jpg" width="50px" height="50px"> <img alt="" class="logo-2" src="/images/w2a.jpg" width="50px" height="50px"></a>
                             </div>
                             <!-- logo close -->
                         </div>

@@ -35,7 +35,7 @@ class MyController extends Controller
         $con->fullscreen = $request->fullscreen;
         $con->primarycolor = $request->primarycolor;
         $con->packagename = $request->packagename ?? 'com.web2app';
-        $con->admob = $request->admob;
+        $con->admob = $request->admob?? '';
         $con->admobID = $request->admobID ?? ' ';
         $con->publish = $request->publish ?? 'no';
         $con->status = '0';
@@ -46,7 +46,7 @@ class MyController extends Controller
             $amount = 5000;
         }elseif ($input["plan"] == "gold") {
             $amount = 10000;
-        } elseif ($input["plan"] == "premuim") {
+        } elseif ($input["plan"] == "premium") {
             $amount = 20000;
         } else {
             $amount = 0;

@@ -123,22 +123,13 @@
 
                                     <div class="accordion">
                                         <div class="accordion-section">
-                                            <div class="accordion-section-title" data-tab="#accordion-1">
-                                                Publish to Store
-                                            </div>
-                                            <div class="accordion-section-content" id="accordion-1">
-                                                <select name="publish" class="form-control">
-                                                    <option value="no" selected>No</option>
-                                                    <option value="yes">Yes</option>
-                                                </select>
-                                            </div>
                                             <div class="accordion-section-title" data-tab="#accordion-2">
                                                 Logo
                                             </div>
                                             <div class="accordion-section-content" id="accordion-2">
                                                 <p>Select your app icon (Recommended PNG format,512px by 512px)</p>
-                                                <input class="form-control-file" name='icon'
-                                                    placeholder="Type your app name" type='file'>
+                                                <input class="form-control" name='icon'
+                                                       placeholder="Paste image link" type='text1'>
                                             </div>
                                             <div class="accordion-section-title" data-tab="#accordion-3">
                                                 Full Screen
@@ -176,37 +167,46 @@
 
                                     <div class="accordion">
                                         <div class="accordion-section">
+                                            <div class="accordion-section-title" data-tab="#accordion-b-0">
+                                                Publish to Store
+                                            </div>
+                                            <div class="accordion-section-content" id="accordion-b-0">
+                                                <select name="publish" class="form-control">
+                                                    <option value="no" selected>No</option>
+                                                    <option value="yes">Yes</option>
+                                                </select>
+                                            </div>
                                             <div class="accordion-section-title" data-tab="#accordion-b-1">
                                                 Package Name
                                             </div>
                                             <div class="accordion-section-content" id="accordion-b-1">
                                                 <p>The package name to be identified with on store</p>
                                                 <input class="form-control" name='packagename'
-                                                    placeholder="e.g com.appname" type='text'>
+                                                    placeholder="e.g com.appname" type='text1'>
                                             </div>
-                                            <div class="accordion-section-title" data-tab="#accordion-b-2">
-                                                Bottom Navigation
-                                            </div>
-                                            <div class="accordion-section-content" id="accordion-b-2">
-                                                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                                    praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                                    molestias excepturi sint occaecati cupiditate non provident, similique
-                                                    sunt in culpa qui officia deserunt mollitia animi, id est laborum et
-                                                    dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
-                                                </p>
-                                            </div>
-                                            <div class="accordion-section-title" data-tab="#accordion-b-3">
-                                                Admob
-                                            </div>
-                                            <div class="accordion-section-content" id="accordion-b-3">
-                                                <p>Selecting yes means you want to monetize your app</p>
-                                                <select name="admob" class="form-control">
-                                                    <option>No</option>
-                                                    <option>Yes</option>
-                                                </select>
-                                                <input class="form-control" name='admobID' placeholder="Admob ID"
-                                                    type='text'>
-                                            </div>
+{{--                                            <div class="accordion-section-title" data-tab="#accordion-b-2">--}}
+{{--                                                Bottom Navigation--}}
+{{--                                            </div>--}}
+{{--                                            <div class="accordion-section-content" id="accordion-b-2">--}}
+{{--                                                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis--}}
+{{--                                                    praesentium voluptatum deleniti atque corrupti quos dolores et quas--}}
+{{--                                                    molestias excepturi sint occaecati cupiditate non provident, similique--}}
+{{--                                                    sunt in culpa qui officia deserunt mollitia animi, id est laborum et--}}
+{{--                                                    dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.--}}
+{{--                                                </p>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="accordion-section-title" data-tab="#accordion-b-3">--}}
+{{--                                                Admob--}}
+{{--                                            </div>--}}
+{{--                                            <div class="accordion-section-content" id="accordion-b-3">--}}
+{{--                                                <p>Selecting yes means you want to monetize your app</p>--}}
+{{--                                                <select name="admob" class="form-control">--}}
+{{--                                                    <option>No</option>--}}
+{{--                                                    <option>Yes</option>--}}
+{{--                                                </select>--}}
+{{--                                                <input class="form-control" name='admobID' placeholder="Admob ID"--}}
+{{--                                                    type='text'>--}}
+{{--                                            </div>--}}
 
                                         </div>
                                     </div>
