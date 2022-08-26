@@ -31,7 +31,7 @@ class MyController extends Controller
         $con->email = $request->email;
         $con->plan = $request->plan;
         $con->appname = $request->appname;
-        $con->icon = $request->icon ?? 'web2app';
+        $con->icon = $request->icon ?? 'https://web2app.5starcompany.com.ng/images/w2a.jpg';
         $con->fullscreen = $request->fullscreen;
         $con->primarycolor = $request->primarycolor;
         $con->packagename = $request->packagename ?? 'com.web2app';

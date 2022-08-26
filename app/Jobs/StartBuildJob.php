@@ -190,8 +190,9 @@ class StartBuildJob implements ShouldQueue
     "environment": {
         "variables": {
             "APP_CONFIG": "'.$app_config.'",
-            "APP_NAME": "WEB2APP",
-            "APP_REFERENCE": "'.$reference.'"
+            "APP_NAME": "'.$conv->appname.'",
+            "APP_REFERENCE": "'.$reference.'",
+            "APP_LOGO": "'.$conv->icon.'"
         },
         "groups": [
             "variable_group_1",
