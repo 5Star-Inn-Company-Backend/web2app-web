@@ -17,9 +17,9 @@ Find the attached files.
 {{--@endif--}}
 
 {{--@if($ios != "")--}}
-    @component('mail::button', ['url' => $ios])
-    Download Runner.app.zip
-    @endcomponent
+@component('mail::button', ['url' => $ios])
+Download Runner.app.zip
+@endcomponent
 {{--@endif--}}
 
 Thanks,<br>
