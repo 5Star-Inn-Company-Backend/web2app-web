@@ -90,7 +90,8 @@
                                     <div class="bottom">
                                         <ul>
                                             <li><i class="fa fa-check-square"></i>Android App</li>
-                                            <li><i class="fa fa-check-square"></i>Window App</li>
+                                            <li><i class="fa fa-check-square"></i>App Bundle (AAB)</li>
+{{--                                            <li><i class="fa fa-check-square"></i>Window App</li>--}}
                                             <li><i class="fa fa-check-square"></i>App Icon</li>
                                             <li><i class="fa fa-check-square"></i>Splash Screen</li>
                                             <li><i class="fa fa-check-square"></i>App Monetization</li>
@@ -122,7 +123,8 @@
                                         <ul>
                                             <li><i class="fa fa-check-square"></i>IOS App</li>
                                             <li><i class="fa fa-check-square"></i>Android App</li>
-                                            <li><i class="fa fa-check-square"></i>Window App</li>
+                                            <li><i class="fa fa-check-square"></i>App Bundle (AAB)</li>
+{{--                                            <li><i class="fa fa-check-square"></i>Window App</li>--}}
                                             <li><i class="fa fa-check-square"></i>App Icon</li>
                                             <li><i class="fa fa-check-square"></i>Splash Screen</li>
                                             <li><i class="fa fa-check-square"></i>App Monetization</li>

@@ -74,6 +74,7 @@ class MyController extends Controller
     "redirect_url": " ' .route('successpage', $con->id) . ' ",
     "currency": "NGN",
     "reference": "' . $reference . '",
+    "narration": "Payment on '.$request->appname.', for Web2App '.$request->plan.' plan",
     "customer" : {
         "email" : " ' . $request->email . ' "
     }
@@ -136,6 +137,45 @@ class MyController extends Controller
 
         if(!$convert){
             return redirect()->route('welcome');
+        }
+
+
+        try {
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => 'https://api.korapay.com/merchant/api/v1/charges/'.$input['reference'],
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'GET',
+                CURLOPT_SSL_VERIFYPEER => false,
+
+                CURLOPT_HTTPHEADER => array(
+                    'Authorization: Bearer ' . env('KORAPAY_KEY'),
+                    'Content-Type: application/json',
+                ),
+            ));
+
+            $response = curl_exec($curl);
+
+            curl_close($curl);
+
+
+            $ref = json_decode($response, true);
+
+            if ($ref['status']) {
+                if ($ref['data']['status'] != "success") {
+                    return redirect()->route('convert')->with('status', 'Payment not successful');
+                }
+            }else{
+                return redirect()->route('convert')->with('status', 'Payment not found');
+            }
+        }catch (\Exception $e){
+            return redirect()->route('convert')->with('status', 'Fatai error while processing payment');
         }
 
         if($convert->status == 0) {

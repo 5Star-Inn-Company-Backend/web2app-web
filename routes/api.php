@@ -20,7 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('build/{reference}', function ($reference){
 
-    \App\Jobs\GetBuildJob::dispatch($reference)->delay(now()->addMinutes(2));
+//    \App\Jobs\GetBuildJob::dispatch($reference)->delay(now()->addMinutes(2));
+    \App\Jobs\GetBuildJob::dispatch($reference);
 
     return response()->json(['success'=>true, 'message'=>$reference]);
 });

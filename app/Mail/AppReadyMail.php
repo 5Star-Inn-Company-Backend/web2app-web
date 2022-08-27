@@ -16,12 +16,16 @@ class AppReadyMail extends Mailable
      *
      * @return void
      */
-    public $fileurl;
+    public $apk;
+    public $aab;
+    public $ios;
     public $reference;
-    public function __construct($reference, $fileurl)
+    public function __construct($reference, $apk, $aab, $ios)
     {
         $this->reference=$reference;
-        $this->fileurl=$fileurl;
+        $this->apk=$apk;
+        $this->ios=$ios;
+        $this->aab=$aab;
     }
 
     /**
@@ -31,6 +35,6 @@ class AppReadyMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.app_ready')->with(['apk' => $this->fileurl])->subject("App is Ready!! ".$this->reference);
+        return $this->markdown('emails.app_ready')->with(['apk' => $this->apk, 'aab' => $this->aab, 'ios' => $this->ios])->subject("App is Ready!! ".$this->reference);
     }
 }

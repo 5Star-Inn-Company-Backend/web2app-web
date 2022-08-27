@@ -46,6 +46,13 @@ class GetBuildJob implements ShouldQueue
             $build=Build::where(['reference_code' => $reference])->first();
 
             if($build){
+
+                if($conv->plan=="premium"){
+                    $auth=env('BUILD_APIKEY_PREMIUM');
+                }else{
+                    $auth=env('BUILD_APIKEY');
+                }
+
                 $curl = curl_init();
 
                 curl_setopt_array($curl, array(
@@ -59,7 +66,7 @@ class GetBuildJob implements ShouldQueue
                     CURLOPT_CUSTOMREQUEST => 'GET',
                     CURLOPT_SSL_VERIFYPEER => false,
                     CURLOPT_HTTPHEADER => array(
-                        'x-auth-token: ' . env('BUILD_APIKEY')
+                        'x-auth-token: ' . $auth
                     ),
                 ));
 
@@ -73,6 +80,7 @@ class GetBuildJob implements ShouldQueue
                 $build->server_response=$response;
 
                 $android="";
+                $aab="";
                 $ios="";
 
 
@@ -81,7 +89,11 @@ class GetBuildJob implements ShouldQueue
                         $android = $artefact['url'];
                     }
 
-                    if($artefact['type'] == "ios") {
+                    if($artefact['type'] == "aab") {
+                        $android = $artefact['url'];
+                    }
+
+                    if($artefact['type'] == "app") {
                         $ios = $artefact['url'];
                     }
                 }
@@ -91,7 +103,11 @@ class GetBuildJob implements ShouldQueue
                 $build->status=1;
                 $build->save();
 
-                Mail::to($conv->email)->send(new AppReadyMail($reference, $android));
+                if($conv->plan=="basic"){
+                    $aab="";
+                }
+
+                Mail::to($conv->email)->send(new AppReadyMail($reference, $android, $aab, $ios));
             }
         }
     }

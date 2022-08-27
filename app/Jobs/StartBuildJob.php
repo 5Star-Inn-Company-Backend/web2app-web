@@ -171,6 +171,16 @@ class StartBuildJob implements ShouldQueue
             $input['config']=$app_config;
             $build=Build::create($input);
 
+            if($conv->plan=="premium"){
+                $appId="6309bcab44a74208bbd23469";
+                $workflowId="6309bcab44a74208bbd23468";
+                $auth=env('BUILD_APIKEY_PREMIUM');
+            }else{
+                $appId="62e4fc24f9c684a19c46b49d";
+                $workflowId="62e4fc24f9c684a19c46b49c";
+                $auth=env('BUILD_APIKEY');
+            }
+
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
@@ -184,8 +194,8 @@ class StartBuildJob implements ShouldQueue
                 CURLOPT_CUSTOMREQUEST => 'POST',
                 CURLOPT_SSL_VERIFYPEER => false,
                 CURLOPT_POSTFIELDS => '{
-    "appId": "62e4fc24f9c684a19c46b49d",
-    "workflowId": "62e4fc24f9c684a19c46b49c",
+    "appId": "'.$appId.'",
+    "workflowId": "'.$workflowId.'",
     "branch": "main",
     "environment": {
         "variables": {
@@ -206,7 +216,7 @@ class StartBuildJob implements ShouldQueue
     }
 }',
                 CURLOPT_HTTPHEADER => array(
-                    'x-auth-token: '.env('BUILD_APIKEY'),
+                    'x-auth-token: '.$auth,
                     'Content-Type: application/json'
                 ),
             ));
