@@ -5,15 +5,15 @@ Your website has been converted to app as requested.
 Find the attached files.
 
 {{--@if($apk != "")--}}
-    @component('mail::button', ['url' => $apk])
-    Download APK
-    @endcomponent
+{{--    @component('mail::button', ['url' => $apk])--}}
+{{--    Download APK--}}
+{{--    @endcomponent--}}
 {{--@endif--}}
 
 {{--@if($aab != "")--}}
-    @component('mail::button', ['url' => $aab])
-    Download AAB
-    @endcomponent
+{{--    @component('mail::button', ['url' => $aab])--}}
+{{--    Download AAB--}}
+{{--    @endcomponent--}}
 {{--@endif--}}
 
 {{--@if($ios != "")--}}
