@@ -90,7 +90,7 @@ class GetBuildJob implements ShouldQueue
                     }
 
                     if($artefact['type'] == "aab") {
-                        $android = $artefact['url'];
+                        $aab = $artefact['url'];
                     }
 
                     if($artefact['type'] == "app") {
