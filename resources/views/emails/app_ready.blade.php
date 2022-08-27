@@ -4,23 +4,23 @@
 Your website has been converted to app as requested.
 Find the attached files.
 
-@if($apk != "")
+{{--@if($apk != "")--}}
     @component('mail::button', ['url' => $apk])
     Download APK
     @endcomponent
-@endif
+{{--@endif--}}
 
-@if($aab != "")
+{{--@if($aab != "")--}}
     @component('mail::button', ['url' => $aab])
     Download AAB
     @endcomponent
-@endif
+{{--@endif--}}
 
-@if($ios != "")
+{{--@if($ios != "")--}}
     @component('mail::button', ['url' => $ios])
     Download Runner.app.zip
     @endcomponent
-@endif
+{{--@endif--}}
 
 Thanks,<br>
 {{ config('app.name') }}
