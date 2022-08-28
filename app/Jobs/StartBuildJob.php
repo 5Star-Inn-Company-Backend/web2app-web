@@ -37,7 +37,7 @@ class StartBuildJob implements ShouldQueue
 
         $reference=$this->reference;
 
-        $conv=convert::where(['reference_code' => $reference, 'status' => 1])->first();
+        $conv=convert::where(['reference_code' => $reference, 'status' => 1])->latest()->first();
 
         if($conv){
             $fullscreen=strtolower($conv->fullscreen) == 'no' ? "false" : "true";

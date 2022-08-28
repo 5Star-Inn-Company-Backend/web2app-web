@@ -39,11 +39,11 @@ class GetBuildJob implements ShouldQueue
 
         $reference=$this->reference;
 
-        $conv=convert::where(['reference_code' => $reference, 'status' => 1])->first();
+        $conv=convert::where(['reference_code' => $reference, 'status' => 1])->latest()->first();
 
         if($conv) {
 
-            $build=Build::where(['reference_code' => $reference])->first();
+            $build=Build::where(['reference_code' => $reference])->latest()->first();
 
             if($build){
 
