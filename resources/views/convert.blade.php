@@ -132,6 +132,22 @@
                                                 <input class="form-control" name='appname' placeholder="Type your app name"
                                                     type='text'>
                                             </div>
+
+                                            <div class="accordion-section-title" data-tab="#accordion-b-2">
+                                                Bottom Navigation
+                                            </div>
+                                            <div class="accordion-section-content" id="accordion-b-2">
+                                                <p> user can add in maximum of 4 sections
+                                                    - <input class="form-control" name='Icons' placeholder="Icon"
+                                                        type='text'>
+                                                    <input class="form-control" name='name' placeholder="Names"
+                                                        type='text'>
+                                                    - <input class="form-control" name='links' placeholder="Link"
+                                                        type='text'>
+                                                    - <br>
+                                                </p>
+                                            </div>
+
                                             <div class="accordion-section-title" data-tab="#accordion-2">
                                                 Logo
                                             </div>
@@ -188,11 +204,14 @@
                                                 Bottom Navigation
                                             </div>
                                             <div class="accordion-section-content" id="accordion-b-2">
-                                                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                                    praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                                    molestias excepturi sint occaecati cupiditate non provident, similique
-                                                    sunt in culpa qui officia deserunt mollitia animi, id est laborum et
-                                                    dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+                                                <p> user can add in maximum of 4 sections
+                                                    - <input class="form-control" name='Icons' placeholder="Icon"
+                                                        type='text'>
+                                                    <input class="form-control" name='name' placeholder="Names"
+                                                        type='text'>
+                                                    - <input class="form-control" name='links' placeholder="Link"
+                                                        type='text'>
+                                                    - <br>
                                                 </p>
                                             </div>
                                             <div class="accordion-section-title" data-tab="#accordion-b-3">
@@ -232,7 +251,7 @@
                                                 <input class="form-control" name='packagename'
                                                     placeholder="e.g com.appname" type='text'>
                                             </div>
-                                            
+
                                             <div class="accordion-section-title" data-tab="#accordion-b-3">
                                                 Admob
                                             </div>
@@ -245,6 +264,37 @@
                                                 <input class="form-control" name='admobID' placeholder="Admob ID"
                                                     type='text'>
                                             </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6 mb30">
+                            <div class="box-highlight s2">
+                                <div class="heading text-center text-white">
+                                    <h3>About</h3>
+                                </div>
+                                <div class="content">
+
+                                    <div class="accordion">
+                                        <div class="accordion-section">
+                                            <div class="accordion-section-title" data-tab="#accordion-b-1">
+                                                About Us
+                                            </div>
+                                            
+
+                                            <div class="accordion-section-title" data-tab="#accordion-b-3">
+                                              Privacy and Policy
+                                            </div>
+
+                                            <div class="accordion-section-title" data-tab="#accordion-b-3">
+                                              Terms and Conditions
+                                            </div>
+                                            
 
                                         </div>
                                     </div>
