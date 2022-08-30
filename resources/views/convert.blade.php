@@ -133,19 +133,7 @@
                                                     type='text'>
                                             </div>
 
-                                            <div class="accordion-section-title" data-tab="#accordion-b-2">
-                                                Bottom Navigation
-                                            </div>
-                                            <div class="accordion-section-content" id="accordion-b-2">
-                                                <p> Select <br>
-                                                    <input class="form-control-file" name='iconss'
-                                                    placeholder="Type your icon name" type='text'>
-                                                   <input class="form-control-file" name='name'
-                                                    placeholder="Type your name" type='text'>  <br>
-                                                    <input class="form-control-file" name='link'
-                                                    placeholder="add link" type='text'>  <br>
-                                                </p>
-                                            </div>
+                                            
 
                                             <div class="accordion-section-title" data-tab="#accordion-2">
                                                 Logo
@@ -200,19 +188,7 @@
                                                 <input class="form-control" name='packagename'
                                                     placeholder="e.g com.appname" type='text'>
                                             </div>
-                                            <div class="accordion-section-title" data-tab="#accordion-b-2">
-                                                Bottom Navigation
-                                            </div>
-                                            <div class="accordion-section-content" id="accordion-b-2">
-                                                <p> Select <br>
-                                                    <input class="form-control-file" name='iconss'
-                                                    placeholder="Type your icon name" type='text'>
-                                                   <input class="form-control-file" name='name'
-                                                    placeholder="Type your name" type='text'>  <br>
-                                                    <input class="form-control-file" name='link'
-                                                    placeholder="add link" type='text'>  <br>
-                                                </p>
-                                            </div>
+                                            
                                             <div class="accordion-section-title" data-tab="#accordion-b-3">
                                                 Admob
                                             </div>
@@ -233,48 +209,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6 mb30">
-                            <div class="box-highlight s2">
-                                <div class="heading text-center text-white">
-                                    <h3>About</h3>
-                                </div>
-                                <div class="content">
-
-                                    <div class="accordion">
-                                        <div class="accordion-section">
-                                            <div class="accordion-section-title" data-tab="#accordion-b-1">
-                                                Terms and Condition
-                                            </div>
-
-                                            <div class="accordion-section-title" data-tab="#accordion-b-2">
-                                                Bottom Navigation
-                                            </div>
-                                            <div class="accordion-section-content" id="accordion-b-2">
-                                                <p> Select <br>
-                                                    <input class="form-control-file" name='iconss'
-                                                    placeholder="Type your icon name" type='text'>
-                                                   <input class="form-control-file" name='name'
-                                                    placeholder="Type your name" type='text'>  <br>
-                                                    <input class="form-control-file" name='link'
-                                                    placeholder="add link" type='text'>  <br>
-                                                </p>
-                                            </div>
-                                            <div class="accordion-section-title" data-tab="#accordion-b-2">
-                                                Privacy Policy
-                                            </div>
-                                            <div class="accordion-section-title" data-tab="#accordion-b-3">
-                                                About Us
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-
+                        
                     </div>
                 </div>
             </section>
