@@ -132,6 +132,21 @@
                                                 <input class="form-control" name='appname' placeholder="Type your app name"
                                                     type='text'>
                                             </div>
+
+                                            <div class="accordion-section-title" data-tab="#accordion-b-2">
+                                                Bottom Navigation
+                                            </div>
+                                            <div class="accordion-section-content" id="accordion-b-2">
+                                                <p> Select <br>
+                                                    <input class="form-control-file" name='iconss'
+                                                    placeholder="Type your icon name" type='text'>
+                                                   <input class="form-control-file" name='name'
+                                                    placeholder="Type your name" type='text'>  <br>
+                                                    <input class="form-control-file" name='link'
+                                                    placeholder="add link" type='text'>  <br>
+                                                </p>
+                                            </div>
+
                                             <div class="accordion-section-title" data-tab="#accordion-2">
                                                 Logo
                                             </div>
@@ -154,6 +169,7 @@
                                             <div class="accordion-section-title" data-tab="#accordion-4">
                                                 Primary Color
                                             </div>
+
                                             <div class="accordion-section-content" id="accordion-4">
                                                 <p>Choose your color</p>
                                                 <input class="form-control" name='primarycolor'
@@ -188,11 +204,13 @@
                                                 Bottom Navigation
                                             </div>
                                             <div class="accordion-section-content" id="accordion-b-2">
-                                                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                                    praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                                    molestias excepturi sint occaecati cupiditate non provident, similique
-                                                    sunt in culpa qui officia deserunt mollitia animi, id est laborum et
-                                                    dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+                                                <p> Select <br>
+                                                    <input class="form-control-file" name='iconss'
+                                                    placeholder="Type your icon name" type='text'>
+                                                   <input class="form-control-file" name='name'
+                                                    placeholder="Type your name" type='text'>  <br>
+                                                    <input class="form-control-file" name='link'
+                                                    placeholder="add link" type='text'>  <br>
                                                 </p>
                                             </div>
                                             <div class="accordion-section-title" data-tab="#accordion-b-3">
@@ -214,6 +232,48 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-md-6 mb30">
+                            <div class="box-highlight s2">
+                                <div class="heading text-center text-white">
+                                    <h3>About</h3>
+                                </div>
+                                <div class="content">
+
+                                    <div class="accordion">
+                                        <div class="accordion-section">
+                                            <div class="accordion-section-title" data-tab="#accordion-b-1">
+                                                Terms and Condition
+                                            </div>
+
+                                            <div class="accordion-section-title" data-tab="#accordion-b-2">
+                                                Bottom Navigation
+                                            </div>
+                                            <div class="accordion-section-content" id="accordion-b-2">
+                                                <p> Select <br>
+                                                    <input class="form-control-file" name='iconss'
+                                                    placeholder="Type your icon name" type='text'>
+                                                   <input class="form-control-file" name='name'
+                                                    placeholder="Type your name" type='text'>  <br>
+                                                    <input class="form-control-file" name='link'
+                                                    placeholder="add link" type='text'>  <br>
+                                                </p>
+                                            </div>
+                                            <div class="accordion-section-title" data-tab="#accordion-b-2">
+                                                Privacy Policy
+                                            </div>
+                                            <div class="accordion-section-title" data-tab="#accordion-b-3">
+                                                About Us
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
 
                     </div>
                 </div>
