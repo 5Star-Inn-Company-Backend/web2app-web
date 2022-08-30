@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('build/{reference}', function ($reference){
+
+    \App\Jobs\GetBuildJob::dispatch($reference)->delay(now()->addMinutes(2));
+
+    return response()->json(['success'=>true, 'message'=>$reference]);
+});

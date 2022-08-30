@@ -2,65 +2,48 @@
 
 @section('content')
 
-<html>
-  <head>
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
-  </head>
-    <style>
-      body {
-        text-align: center;
-        padding: 40px 0;
-        background: #EBF0F5;
-      }
-        h1 {
-          color: #88B04B;
-          font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
-          font-weight: 900;
-          font-size: 40px;
-          margin-bottom: 10px;
-        }
-        p {
-          color: #404F5E;
-          font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
-          font-size:20px;
-          margin: 0;
-          font-weight:bold;
-          
-        }
-      i {
-        color: #9ABC66;
-        font-size: 100px;
-        line-height: 200px;
-        margin-left:-15px;
-      }
-      .card {
-        background: white;
-        padding: 60px;
-        border-radius: 4px;
-        box-shadow: 0 2px 3px #C8D0D8;
-        display: inline-block;
-        margin: 100px auto;
+    <div class="no-bottom no-top" id="content">
+        <div id="top"></div>
+        <!-- section begin -->
+        <section class="no-top no-bottom text-light" data-bgimage="url(images/background/11.jpg)" data-stellar-background-ratio=".2">
 
-      }
-    </style>
-    <body>
-      <div class="card">
-      <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
-        <i class="checkmark">✓</i>
-      </div>
-        <h1>Success</h1> 
-        <p>We received your purchase request. Below is your Reference Code
-         <br/>
+            <div class="overlay-gradient t90">
+                <div class="container">
+                    <div class="row">
+{{--                        <div class="col-md-12 text-center">--}}
+{{--                            <div class="spacer-50 sm-hide"></div>--}}
+{{--                            <h1 class="no-bottom">Your request is successful</h1>--}}
+{{--                            <p class="lead">Reserve your domain today before someone take it.</p>--}}
+{{--                        </div>--}}
 
-        {{ $convert->reference_code}}
-        
-        <br> make sure to copy it Because we wont show it to you again
-        </p>
-        @php
-          $convert->status = 1;  
-          $convert->update();
-        @endphp
-      </div>
-    </body>
-</html>
+                        <div class="spacer-60"></div>
+
+                        <div class="col-md-8 offset-md-2">
+
+                            <div class="box-highlight s2 text-center mb40">
+                                <div class="heading"><h3>Hurray!!!</h3></div>
+                                <div class="content v1">
+                                    <p>Hurray, we have received your conversion request and it is currently being handled by our system, you will receive email as soon as the app is ready. Below is your Reference Code</p>
+                                    <div class="spacer-10"></div>
+                                    <strong>{{$reference}}</strong>
+                                    <div class="spacer-30"></div>
+                                    <a href="{{route('convert')}}" class="btn-custom mt-5">Convert Another Website</a>
+                                    <div class="spacer-10"></div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- section close -->
+
+
+    </div>
+
 @endsection

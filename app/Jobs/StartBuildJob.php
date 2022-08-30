@@ -2,6 +2,8 @@
 
 namespace App\Jobs;
 
+use App\Models\Build;
+use App\Models\convert;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -18,9 +20,11 @@ class StartBuildJob implements ShouldQueue
      *
      * @return void
      */
-    public function __construct()
+
+    public $reference;
+    public function __construct($reference)
     {
-        //
+        $this->reference=$reference;
     }
 
     /**
@@ -31,26 +35,175 @@ class StartBuildJob implements ShouldQueue
     public function handle()
     {
 
+        $reference=$this->reference;
 
-        $curl = curl_init();
+        $conv=convert::where(['reference_code' => $reference, 'status' => 1])->latest()->first();
 
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://api.codemagic.io/builds',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => '{
-    "appId": "62e4fc24f9c684a19c46b49d",
-    "workflowId": "62e4fc24f9c684a19c46b49c",
+        if($conv){
+            $fullscreen=strtolower($conv->fullscreen) == 'no' ? "false" : "true";
+
+            $config='{
+  "public": {
+    "appName": "'.$conv->appname.'",
+    "initialUrl": "'.$conv->url.'",
+    "userAgent": "web2app",
+    "primaryColor": "'.$conv->primarycolor.'",
+    "fullScreen": '.$fullscreen.',
+    "forceScreenOrientation": false
+  },
+  "navigations": {
+    "tab": {
+      "menus": [
+        {
+          "icon": "Icons.home",
+          "label": "Main",
+          "url": "https://gonative.io"
+        },
+        {
+          "icon": "Icons.history",
+          "label": "Create Account",
+          "url": "https://trixwallet.com/mobileapp/register"
+        },
+        {
+          "subLinks": [],
+          "icon": "Icons.history",
+          "label": "GoNative Demo",
+          "url": "https://gonative.io/demo"
+        }
+      ],
+      "active": false
+    },
+    "drawer": {
+      "items": [
+        {
+          "label": "Sample Home",
+          "url": "https://gonative.io",
+          "icon": "fas fa-home"
+        },
+        {
+          "label": "Sample About",
+          "url": "https://gonative.io/about",
+          "icon": "fas fa-user"
+        }
+      ],
+      "active": false
+    },
+    "androidPullToRefresh": false,
+    "iosPullToRefresh": true,
+    "navigationTitles": {
+      "titles": [
+        {}
+      ],
+      "active": false
+    },
+    "toolbarNavigation": {
+      "items": [
+        {
+          "system": "back",
+          "title": "Back"
+        },
+        {
+          "system": "forward",
+          "title": "Forward"
+        },
+        {
+          "system": "refresh"
+        }
+      ]
+    },
+    "androidShowRefreshButton": false,
+    "deepLinkDomains": {
+      "domains": [],
+      "enableAndroidApplinks": false
+    }
+  },
+  "styling": {
+    "transitionInteractiveDelayMax": 0.2,
+    "menuAnimationDuration": 0.15,
+    "androidShowSplash": true,
+    "disableAnimations": false,
+    "hideWebviewAlpha": 0.5,
+    "showActionBar": true,
+    "showNavigationBar": true,
+    "iosSidebarFont": "Default",
+    "androidHideTitleInActionBar": true,
+    "navigationTitleImage": true,
+    "iosTheme": "default",
+    "androidTheme": "light",
+    "androidSidebarBackgroundColor": "#FFFFFF",
+    "androidSidebarForegroundColor": "#1E496E",
+    "androidActionBarBackgroundColor": "#FFFFFF",
+    "androidActionBarForegroundColor": "#1E496E",
+    "androidPullToRefreshColor": "#1E496E",
+    "androidAccentColor": "#1E496E",
+    "androidSidebarSeparatorColor": "#CCCCCC",
+    "androidTabBarBackgroundColor": "#FFFFFF",
+    "androidTabBarTextColor": "#949494",
+    "androidTabBarIndicatorColor": "#1E496E",
+    "androidStatusBarBackgroundColor": "#5C5C5C",
+    "iosTintColor": "#1E496E",
+    "iosTitleColor": "#1E496E",
+    "iosSidebarTextColor": "#1E496E"
+  },
+  "permissions": {
+    "usesGeolocation": false,
+    "androidDownloadToPublicStorage": false,
+    "enableWebRTC": false
+  },
+  "performance": {
+    "webviewPools": [
+      {
+        "urls": [
+          {
+            "disown": "reload"
+          }
+        ]
+      }
+    ]
+  },
+  "services": {
+  }
+}';
+
+            $app_config=base64_encode($config);
+
+            $input['reference_code']=$reference;
+            $input['config']=$app_config;
+            $build=Build::create($input);
+
+            if($conv->plan=="premium"){
+                $appId="6309bcab44a74208bbd23469";
+                $workflowId="6309bcab44a74208bbd23468";
+                $auth=env('BUILD_APIKEY_PREMIUM');
+            }else{
+                $appId="62e4fc24f9c684a19c46b49d";
+                $workflowId="62e4fc24f9c684a19c46b49c";
+                $auth=env('BUILD_APIKEY');
+            }
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => 'https://api.codemagic.io/builds',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_SSL_VERIFYPEER => false,
+                CURLOPT_POSTFIELDS => '{
+    "appId": "'.$appId.'",
+    "workflowId": "'.$workflowId.'",
     "branch": "main",
     "environment": {
         "variables": {
-            "APP_CONFIG": "ewogICJwdWJsaWMiOiB7CiAgICAiYXBwTmFtZSI6ICJBUEkgQXBwIiwKICAgICJpbml0aWFsVXJsIjogImh0dHBzOi8vdHJpeHdhbGxldC5jb20vbW9iaWxlYXBwLyIsCiAgICAidXNlckFnZW50IjogIndlYjJhcHAiLAogICAgInByaW1hcnlDb2xvciI6ICJGRkZGMDAiLAogICAgImZ1bGxTY3JlZW4iOiBmYWxzZSwKICAgICJmb3JjZVNjcmVlbk9yaWVudGF0aW9uIjogZmFsc2UKICB9LAogICJuYXZpZ2F0aW9ucyI6IHsKICAgICJ0YWIiOiB7CiAgICAgICJtZW51cyI6IFsKICAgICAgICB7CiAgICAgICAgICAiaWNvbiI6ICJJY29ucy5ob21lIiwKICAgICAgICAgICJsYWJlbCI6ICJNYWluIiwKICAgICAgICAgICJ1cmwiOiAiaHR0cHM6Ly9nb25hdGl2ZS5pbyIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJpY29uIjogIkljb25zLmhpc3RvcnkiLAogICAgICAgICAgImxhYmVsIjogIkNyZWF0ZSBBY2NvdW50IiwKICAgICAgICAgICJ1cmwiOiAiaHR0cHM6Ly90cml4d2FsbGV0LmNvbS9tb2JpbGVhcHAvcmVnaXN0ZXIiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAic3ViTGlua3MiOiBbXSwKICAgICAgICAgICJpY29uIjogIkljb25zLmhpc3RvcnkiLAogICAgICAgICAgImxhYmVsIjogIkdvTmF0aXZlIERlbW8iLAogICAgICAgICAgInVybCI6ICJodHRwczovL2dvbmF0aXZlLmlvL2RlbW8iCiAgICAgICAgfQogICAgICBdLAogICAgICAiYWN0aXZlIjogdHJ1ZQogICAgfSwKICAgICJkcmF3ZXIiOiB7CiAgICAgICJpdGVtcyI6IFsKICAgICAgICB7CiAgICAgICAgICAibGFiZWwiOiAiU2FtcGxlIEhvbWUiLAogICAgICAgICAgInVybCI6ICJodHRwczovL2dvbmF0aXZlLmlvIiwKICAgICAgICAgICJpY29uIjogImZhcyBmYS1ob21lIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgImxhYmVsIjogIlNhbXBsZSBBYm91dCIsCiAgICAgICAgICAidXJsIjogImh0dHBzOi8vZ29uYXRpdmUuaW8vYWJvdXQiLAogICAgICAgICAgImljb24iOiAiZmFzIGZhLXVzZXIiCiAgICAgICAgfQogICAgICBdLAogICAgICAiYWN0aXZlIjogdHJ1ZQogICAgfSwKICAgICJhbmRyb2lkUHVsbFRvUmVmcmVzaCI6IGZhbHNlLAogICAgImlvc1B1bGxUb1JlZnJlc2giOiB0cnVlLAogICAgIm5hdmlnYXRpb25UaXRsZXMiOiB7CiAgICAgICJ0aXRsZXMiOiBbCiAgICAgICAge30KICAgICAgXSwKICAgICAgImFjdGl2ZSI6IGZhbHNlCiAgICB9LAogICAgInRvb2xiYXJOYXZpZ2F0aW9uIjogewogICAgICAiaXRlbXMiOiBbCiAgICAgICAgewogICAgICAgICAgInN5c3RlbSI6ICJiYWNrIiwKICAgICAgICAgICJ0aXRsZSI6ICJCYWNrIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInN5c3RlbSI6ICJmb3J3YXJkIiwKICAgICAgICAgICJ0aXRsZSI6ICJGb3J3YXJkIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInN5c3RlbSI6ICJyZWZyZXNoIgogICAgICAgIH0KICAgICAgXQogICAgfSwKICAgICJhbmRyb2lkU2hvd1JlZnJlc2hCdXR0b24iOiBmYWxzZSwKICAgICJkZWVwTGlua0RvbWFpbnMiOiB7CiAgICAgICJkb21haW5zIjogW10sCiAgICAgICJlbmFibGVBbmRyb2lkQXBwbGlua3MiOiBmYWxzZQogICAgfQogIH0sCiAgInN0eWxpbmciOiB7CiAgICAidHJhbnNpdGlvbkludGVyYWN0aXZlRGVsYXlNYXgiOiAwLjIsCiAgICAibWVudUFuaW1hdGlvbkR1cmF0aW9uIjogMC4xNSwKICAgICJhbmRyb2lkU2hvd1NwbGFzaCI6IHRydWUsCiAgICAiZGlzYWJsZUFuaW1hdGlvbnMiOiBmYWxzZSwKICAgICJoaWRlV2Vidmlld0FscGhhIjogMC41LAogICAgInNob3dBY3Rpb25CYXIiOiB0cnVlLAogICAgInNob3dOYXZpZ2F0aW9uQmFyIjogdHJ1ZSwKICAgICJpb3NTaWRlYmFyRm9udCI6ICJEZWZhdWx0IiwKICAgICJhbmRyb2lkSGlkZVRpdGxlSW5BY3Rpb25CYXIiOiB0cnVlLAogICAgIm5hdmlnYXRpb25UaXRsZUltYWdlIjogdHJ1ZSwKICAgICJpb3NUaGVtZSI6ICJkZWZhdWx0IiwKICAgICJhbmRyb2lkVGhlbWUiOiAibGlnaHQiLAogICAgImFuZHJvaWRTaWRlYmFyQmFja2dyb3VuZENvbG9yIjogIiNGRkZGRkYiLAogICAgImFuZHJvaWRTaWRlYmFyRm9yZWdyb3VuZENvbG9yIjogIiMxRTQ5NkUiLAogICAgImFuZHJvaWRBY3Rpb25CYXJCYWNrZ3JvdW5kQ29sb3IiOiAiI0ZGRkZGRiIsCiAgICAiYW5kcm9pZEFjdGlvbkJhckZvcmVncm91bmRDb2xvciI6ICIjMUU0OTZFIiwKICAgICJhbmRyb2lkUHVsbFRvUmVmcmVzaENvbG9yIjogIiMxRTQ5NkUiLAogICAgImFuZHJvaWRBY2NlbnRDb2xvciI6ICIjMUU0OTZFIiwKICAgICJhbmRyb2lkU2lkZWJhclNlcGFyYXRvckNvbG9yIjogIiNDQ0NDQ0MiLAogICAgImFuZHJvaWRUYWJCYXJCYWNrZ3JvdW5kQ29sb3IiOiAiI0ZGRkZGRiIsCiAgICAiYW5kcm9pZFRhYkJhclRleHRDb2xvciI6ICIjOTQ5NDk0IiwKICAgICJhbmRyb2lkVGFiQmFySW5kaWNhdG9yQ29sb3IiOiAiIzFFNDk2RSIsCiAgICAiYW5kcm9pZFN0YXR1c0JhckJhY2tncm91bmRDb2xvciI6ICIjNUM1QzVDIiwKICAgICJpb3NUaW50Q29sb3IiOiAiIzFFNDk2RSIsCiAgICAiaW9zVGl0bGVDb2xvciI6ICIjMUU0OTZFIiwKICAgICJpb3NTaWRlYmFyVGV4dENvbG9yIjogIiMxRTQ5NkUiCiAgfSwKICAicGVybWlzc2lvbnMiOiB7CiAgICAidXNlc0dlb2xvY2F0aW9uIjogZmFsc2UsCiAgICAiYW5kcm9pZERvd25sb2FkVG9QdWJsaWNTdG9yYWdlIjogZmFsc2UsCiAgICAiZW5hYmxlV2ViUlRDIjogZmFsc2UKICB9LAogICJwZXJmb3JtYW5jZSI6IHsKICAgICJ3ZWJ2aWV3UG9vbHMiOiBbCiAgICAgIHsKICAgICAgICAidXJscyI6IFsKICAgICAgICAgIHsKICAgICAgICAgICAgImRpc293biI6ICJyZWxvYWQiCiAgICAgICAgICB9CiAgICAgICAgXQogICAgICB9CiAgICBdCiAgfSwKICAic2VydmljZXMiOiB7CiAgfQp9",
-            "APP_NAME": "WEB2APP"
+            "APP_CONFIG": "'.$app_config.'",
+            "APP_NAME": "'.$conv->appname.'",
+            "APP_PACKAGE_NAME": "'.$conv->packagename.'",
+            "APP_REFERENCE": "'.$reference.'",
+            "APP_LOGO": "'.$conv->icon.'"
         },
         "groups": [
             "variable_group_1",
@@ -62,16 +215,26 @@ class StartBuildJob implements ShouldQueue
         }
     }
 }',
-            CURLOPT_HTTPHEADER => array(
-                'x-auth-token: '.env('BUILD_APIKEY'),
-                'Content-Type: application/json'
-            ),
-        ));
+                CURLOPT_HTTPHEADER => array(
+                    'x-auth-token: '.$auth,
+                    'Content-Type: application/json'
+                ),
+            ));
 
-        $response = curl_exec($curl);
+            $response = curl_exec($curl);
 
-        curl_close($curl);
-        echo $response;
+            curl_close($curl);
+//            echo $response;
+
+//            dd($response);
+
+//        {"buildId":"5fabc6414c483700143f4f92"}
+
+            $resp=json_decode($response, true);
+
+            $build->build_id=$resp['buildId'];
+            $build->save();
+        }
 
     }
 }

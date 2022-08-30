@@ -9,7 +9,7 @@
                 <ul>
                     <li data-masterspeed="1500" data-slotamount="10" data-transition="fade">
                         <!--  BACKGROUND IMAGE -->
-                        <img alt="" class="rev-slidebg" data-bgparallax="0" data-bgposition="center center" data-duration="20000" data-ease="Power1.easeOut" data-kenburns="off" data-lazyload="images/slider/6.jpg" data-no-retina="" data-offsetend="0 0" data-offsetstart="0 0" data-rotateend="0" data-rotatestart="0" data-scaleend="100" data-scalestart="110" src="images/slider/1.jpg">
+                        <img alt="" class="rev-slidebg" data-bgparallax="0" data-bgposition="center center" data-duration="20000" data-ease="Power1.easeOut" data-kenburns="off" data-lazyload="images/slider/3.jpg" data-no-retina="" data-offsetend="0 0" data-offsetstart="0 0" data-rotateend="0" data-rotatestart="0" data-scaleend="100" data-scalestart="110" src="images/slider/3.jpg">
 
                         <div class="tp-caption custom-font-3" data-height="none" data-responsive_offset="on" data-splitin="none" data-splitout="none" data-start="1000" data-transform_in="y:-100px;opacity:0;s:800;e:Power2.easeOut;" data-transform_out="opacity:0;y:-20;s:500;e:Power2.easeInOut;" data-whitespace="nowrap" data-width="none" data-x="600" data-y="200">
                             Web<span class="id-color-2">2</span>App
@@ -37,7 +37,7 @@
                             ANDROID <span class="id-color-2">-</span> IOS <span class="id-color-2">-</span> WINDOWS <span class="id-color-2">-</span> LINUX
                         </div>
                         <div class="tp-caption tp-text text-left" data-height="none" data-responsive_offset="on" data-splitin="none" data-splitout="none" data-start="1300" data-transform_in="y:100px;opacity:0;s:800;e:Power2.easeOut;" data-transform_out="opacity:0;y:30;s:700;e:Power2.easeInOut;" data-whitespace="nowrap" data-width="none" data-x="0" data-y="380">
-                            <a class="btn-slider" href="domain.html">Convert Website Now</a>
+                            <a class="btn-slider" href="{{route('convert')}}">Convert Website Now</a>
                         </div>
                         <div class="tp-caption tp-text text-left" data-height="none" data-responsive_offset="on" data-splitin="none" data-splitout="none" data-start="1000" data-transform_in="y:100;s:0;opacity:0;s:800;e:Power2.easeOut;" data-transform_out="opacity:0;y:0;s:700;e:Power2.easeInOut;" data-whitespace="nowrap" data-width="none" data-x="600" data-y="bottom">
                             <img src="images/slider/server-2.png" alt="">
@@ -46,7 +46,7 @@
 
                     <li data-masterspeed="1500" data-slotamount="10" data-transition="fade">
                         <!--  BACKGROUND IMAGE -->
-                        <img alt="" class="rev-slidebg" data-bgparallax="0" data-bgposition="center center" data-duration="20000" data-ease="Power1.easeOut" data-kenburns="off" data-lazyload="images/slider/6.jpg" data-no-retina="" data-offsetend="0 0" data-offsetstart="0 0" data-rotateend="0" data-rotatestart="0" data-scaleend="100" data-scalestart="110" src="images/slider/1.jpg">
+                        <img alt="" class="rev-slidebg" data-bgparallax="0" data-bgposition="center center" data-duration="20000" data-ease="Power1.easeOut" data-kenburns="off" data-lazyload="images/slider/4.jpg" data-no-retina="" data-offsetend="0 0" data-offsetstart="0 0" data-rotateend="0" data-rotatestart="0" data-scaleend="100" data-scalestart="110" src="images/slider/4.jpg">
 
                         <div class="tp-caption custom-font-3" data-height="none" data-responsive_offset="on" data-splitin="none" data-splitout="none" data-start="1000" data-transform_in="y:-100px;opacity:0;s:800;e:Power2.easeOut;" data-transform_out="opacity:0;y:-20;s:500;e:Power2.easeInOut;" data-whitespace="nowrap" data-width="none" data-x="600" data-y="200">
                             Web<span class="id-color-2">2</span>App
@@ -55,7 +55,7 @@
                             Give your users a better experience using your site by getting instant access
                         </div>
                         <div class="tp-caption tp-text text-left" data-height="none" data-responsive_offset="on" data-splitin="none" data-splitout="none" data-start="1300" data-transform_in="y:100px;opacity:0;s:800;e:Power2.easeOut;" data-transform_out="opacity:0;y:30;s:700;e:Power2.easeInOut;" data-whitespace="nowrap" data-width="none" data-x="600" data-y="380">
-                            <a class="btn-slider" href="domain.html">Convert Website Now</a>
+                            <a class="btn-slider" href="{{route('convert')}}">Convert Website Now</a>
                         </div>
                         <div class="tp-caption tp-text text-left" data-height="none" data-responsive_offset="on" data-splitin="none" data-splitout="none" data-start="1000" data-transform_in="y:100;s:0;opacity:0;s:800;e:Power2.easeOut;" data-transform_out="opacity:0;y:0;s:700;e:Power2.easeInOut;" data-whitespace="nowrap" data-width="none" data-x="0" data-y="bottom">
                             <img src="images/slider/server-2.png" alt="">
@@ -71,10 +71,10 @@
                             Web<span class="id-color-2">2</span>App
                         </div>
                         <div class="tp-caption custom-font-1" data-height="none" data-responsive_offset="on" data-splitin="none" data-splitout="none" data-start="700" data-transform_in="y:-100px;opacity:0;s:800;e:Power2.easeOut;" data-transform_out="opacity:0;y:-20;s:700;e:Power2.easeInOut;" data-whitespace="wrap" data-width="550" data-x="0" data-y="center">
-                            Create App online without coding experience for your website in less than 5 minutes.
+                            Create App online without coding experience for your website in less than 10 minutes.
                         </div>
                         <div class="tp-caption tp-text text-left" data-height="none" data-responsive_offset="on" data-splitin="none" data-splitout="none" data-start="1300" data-transform_in="y:100px;opacity:0;s:800;e:Power2.easeOut;" data-transform_out="opacity:0;y:30;s:700;e:Power2.easeInOut;" data-whitespace="nowrap" data-width="none" data-x="0" data-y="380">
-                            <a class="btn-slider" href="domain.html">Convert Website Now</a>
+                            <a class="btn-slider" href="{{route('convert')}}">Convert Website Now</a>
                         </div>
                         <div class="tp-caption tp-text text-left" data-height="none" data-responsive_offset="on" data-splitin="none" data-splitout="none" data-start="1000" data-transform_in="y:100;s:0;opacity:0;s:800;e:Power2.easeOut;" data-transform_out="opacity:0;y:0;s:700;e:Power2.easeInOut;" data-whitespace="nowrap" data-width="none" data-x="600" data-y="bottom">
                             <img src="images/slider/server-2.png" alt="">
@@ -161,7 +161,7 @@
                         <div class="feature-box-type-1 hover">
                             <i class="icon-profile-male"></i>
                             <div class="text">
-                                <h3 class="">24/7 Support</h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                <h3 class="">24/7 Support</h3>You can always reach our support team at info@5starcompany.com.ng
                             </div>
                         </div>
                     </div>
@@ -210,18 +210,19 @@
 {{--            </div>--}}
 {{--        </section>--}}
 
-        <section aria-label="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-12 wow fadeInUp" data-wow-delay="0s">
-                            <div id="owl-logo" class="logo-carousel owl-carousel owl-theme">
-                                <img src="images/os/android.png" class="img-fluid" alt="android">
-                                <img src="images/os/ios.png" class="img-fluid" alt="ios">
-                                <img src="images/os/window.png" class="img-fluid" alt="window">
-                                <img src="images/os/linux.png" class="img-fluid" alt="linux">
-                                <img src="" class="img-fluid" alt="">
-                                <img src="" class="img-fluid" alt="">
+{{--        <section aria-label="section">--}}
+{{--            <div class="container">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-md-12">--}}
+{{--                        <div class="col-md-12 wow fadeInUp" data-wow-delay="0s">--}}
+{{--                            <div id="owl-logo" class="logo-carousel owl-carousel owl-theme">--}}
+{{--                                <img src="images/os/android.png" class="img-fluid" alt="android">--}}
+{{--                                <img src="images/os/ios.png" class="img-fluid" alt="ios">--}}
+{{--                                <img src="images/os/window.png" class="img-fluid" alt="window">--}}
+{{--                                <img src="images/os/linux.png" class="img-fluid" alt="linux">--}}
+{{--                                <img src="images/logo/5.png" class="img-fluid" alt="linux">--}}
+{{--                                <img src="" class="img-fluid" alt="">--}}
+{{--                                <img src="" class="img-fluid" alt="">--}}
 {{--                                <img src="images/logo-white/1.png" class="img-fluid" alt="">--}}
 {{--                                <img src="images/logo-white/2.png" class="img-fluid" alt="">--}}
 {{--                                <img src="images/logo-white/3.png" class="img-fluid" alt="">--}}
@@ -230,12 +231,12 @@
 {{--                                <img src="images/logo-white/6.png" class="img-fluid" alt="">--}}
 {{--                                <img src="images/logo-white/7.png" class="img-fluid" alt="">--}}
 {{--                                <img src="images/logo-white/8.png" class="img-fluid" alt="">--}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </section>--}}
 
 {{--        <section id="pricing-table" class="pb40 bgcolor-variation">--}}
 {{--            <div class="container">--}}
@@ -316,32 +317,6 @@
 {{--            </div>--}}
 {{--        </section>--}}
 
-        <section id="section-banner" class="no-bottom no-top img-fluid relative pos-top img-shadow" data-bgimage="url(images/background/15.jpg) center" data-stellar-background-ratio=".2">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 d-none d-lg-block d-xl-block  text-center">
-                        <div class="relative mt-60 overflow-hidden">
-                            <img class="img-fluid wow fadeInUp" src="images/misc/4.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 wow fadeIn" data-wow-delay=".5s">
-                        <div class="p-sm-30 pb-sm-0 mb-sm-0">
-                            <h2>30 days money back satisfication guarantee</h2>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 wow fadeIn" data-wow-delay="1s">
-                        <div class="p-sm-30">
-                            <p class="lead">If you not satisfy with Uhost, we will refund your payment. No hassle, no risk. You can cancel plan at any time.</p>
-                            <div class="spacer-half"></div>
-                            <a class="btn-custom" href="#">Get Started</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
 {{--        <section id="section-features">--}}
 {{--            <div class="container">--}}
 {{--                <div class="row">--}}
@@ -397,10 +372,11 @@
                 <div class="item">
                     <div class="de_testi opt-2">
                         <blockquote>
-                            <p>Great support, like i have never seen before. Thanks to the support team, they are very helpfull. This company provide customers great solution, that makes them best.
+                            <p>With Web2App, anyone can both build an engaging apps with no coding or design skills. For most small businesses like mine, it is the best solution because it allows owning an app with affordable price.
                             </p>
                             <div class="de_testi_by">
-                                <img alt="" class="rounded-circle" src="images/people/1.jpg"> <span>John, Pixar Studio</span>
+{{--                                <img alt="" class="rounded-circle" src="images/people/1.jpg"> --}}
+                                <span>Samson, Akinlabi</span>
                             </div>
                         </blockquote>
                     </div>
@@ -408,9 +384,10 @@
                 <div class="item">
                     <div class="de_testi opt-2">
                         <blockquote>
-                            <p>Great support, like i have never seen before. Thanks to the support team, they are very helpfull. This company provide customers great solution, that makes them best.</p>
+                            <p>Through mobile app, I have obtained a greater number in terms of readership, downloads, and impressions. Thanks guys. Now, a larger number of readers can access my publications.</p>
                             <div class="de_testi_by">
-                                <img alt="" class="rounded-circle" src="images/people/2.jpg"> <span>Sarah, Microsoft</span>
+{{--                                <img alt="" class="rounded-circle" src="images/people/2.jpg"> --}}
+                                <span>Emmanuel, Promise</span>
                             </div>
                         </blockquote>
                     </div>
@@ -418,9 +395,10 @@
                 <div class="item">
                     <div class="de_testi opt-2">
                         <blockquote>
-                            <p>Great support, like i have never seen before. Thanks to the support team, they are very helpfull. This company provide customers great solution, that makes them best.</p>
+                            <p>I have never imagined creating a mobile app with no coding skills. But, yes it can actually work. Web2App is easy to use loaded with great features. All you need to do is follow few steps.</p>
                             <div class="de_testi_by">
-                                <img alt="" class="rounded-circle" src="images/people/3.jpg"> <span>Michael, Apple</span>
+{{--                                <img alt="" class="rounded-circle" src="images/people/3.jpg"> --}}
+                                <span>Dorcas, Adewale</span>
                             </div>
                         </blockquote>
                     </div>
@@ -428,9 +406,10 @@
                 <div class="item">
                     <div class="de_testi opt-2">
                         <blockquote>
-                            <p>Great support, like i have never seen before. Thanks to the support team, they are very helpfull. This company provide customers great solution, that makes them best.</p>
+                            <p>Not only is it affordable but it turns our website into a great-looking app and helping to engage with our clients more efficiently</p>
                             <div class="de_testi_by">
-                                <img alt="" class="rounded-circle" src="images/people/4.jpg"> <span>Thomas, Samsung</span>
+{{--                                <img alt="" class="rounded-circle" src="images/people/4.jpg"> --}}
+                                <span>Ayo, Thomas</span>
                             </div>
                         </blockquote>
                     </div>
@@ -438,39 +417,10 @@
                 <div class="item">
                     <div class="de_testi opt-2">
                         <blockquote>
-                            <p>Great support, like i have never seen before. Thanks to the support team, they are very helpfull. This company provide customers great solution, that makes them best.</p>
+                            <p>Great support. Thanks to the support team, they are very helpful. This company provide customers great solution, that makes them best.</p>
                             <div class="de_testi_by">
-                                <img alt="" class="rounded-circle" src="images/people/1.jpg"> <span>John, Pixar Studio</span>
-                            </div>
-                        </blockquote>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="de_testi opt-2">
-                        <blockquote>
-                            <p>Great support, like i have never seen before. Thanks to the support team, they are very helpfull. This company provide customers great solution, that makes them best.</p>
-                            <div class="de_testi_by">
-                                <img alt="" class="rounded-circle" src="images/people/2.jpg"> <span>Sarah, Microsoft</span>
-                            </div>
-                        </blockquote>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="de_testi opt-2">
-                        <blockquote>
-                            <p>Great support, like i have never seen before. Thanks to the support team, they are very helpfull. This company provide customers great solution, that makes them best.</p>
-                            <div class="de_testi_by">
-                                <img alt="" class="rounded-circle" src="images/people/3.jpg"> <span>Michael, Apple</span>
-                            </div>
-                        </blockquote>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="de_testi opt-2">
-                        <blockquote>
-                            <p>Great support, like i have never seen before. Thanks to the support team, they are very helpfull. This company provide customers great solution, that makes them best.</p>
-                            <div class="de_testi_by">
-                                <img alt="" class="rounded-circle" src="images/people/4.jpg"> <span>Thomas, Samsung</span>
+{{--                                <img alt="" class="rounded-circle" src="images/people/1.jpg"> --}}
+                                <span>Femi, Tokunbo</span>
                             </div>
                         </blockquote>
                     </div>
@@ -508,6 +458,18 @@
                                 <div class="accordion-section-content" id="accordion-3">
                                     <p>You only need to enter your website URL, upload your logo to convert your website into an app within minutes</p>
                                 </div>
+                                <div class="accordion-section-title" data-tab="#accordion-4">
+                                    How will I receive my application?
+                                </div>
+                                <div class="accordion-section-content" id="accordion-4">
+                                    <p>Your application will be delivered to you via email (to your inbox).</p>
+                                </div>
+                                <div class="accordion-section-title" data-tab="#accordion-5">
+                                    Do you provide Push Notifications?
+                                </div>
+                                <div class="accordion-section-content" id="accordion-5">
+                                    <p>Yes, we do provide Push Notifications for iOS and Android.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -519,7 +481,7 @@
                                     When will my application be ready?
                                 </div>
                                 <div class="accordion-section-content" id="accordion-b-4">
-                                    <p>Your app will be ready in 5 minutes</p>
+                                    <p>Your app will be ready in 10 minutes</p>
                                 </div>
                                 <div class="accordion-section-title" data-tab="#accordion-b-5">
                                     How many times do I have to pay?
@@ -532,6 +494,13 @@
                                 </div>
                                 <div class="accordion-section-content" id="accordion-b-6">
                                     <p>Yes, perfectly well. Once you download your application, you can publish it without any problem. It is a really easy process, you will be able to publish the apps in 15 minutes . In case you need help, our team can assist you. We can also offer push to store automation as soon as your application finish building at low cost.</p>
+                                </div>
+
+                                <div class="accordion-section-title" data-tab="#accordion-b-5">
+                                    How will my application look?
+                                </div>
+                                <div class="accordion-section-content" id="accordion-b-5">
+                                    <p>Your application will look exactly as your website on mobile devices without the browser interface.</p>
                                 </div>
                             </div>
                         </div>

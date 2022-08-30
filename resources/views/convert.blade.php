@@ -132,9 +132,6 @@
                                                 <input class="form-control" name='appname' placeholder="Type your app name"
                                                     type='text'>
                                             </div>
-
-                                            
-
                                             <div class="accordion-section-title" data-tab="#accordion-2">
                                                 Logo
                                             </div>
@@ -157,11 +154,58 @@
                                             <div class="accordion-section-title" data-tab="#accordion-4">
                                                 Primary Color
                                             </div>
-
                                             <div class="accordion-section-content" id="accordion-4">
                                                 <p>Choose your color</p>
                                                 <input class="form-control" name='primarycolor'
                                                     placeholder="Type your app name" type='color'>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb30">
+                            <div class="box-highlight s2">
+                                <div class="heading text-center text-white">
+                                    <h3>Advanced Settings</h3>
+                                </div>
+                                <div class="content">
+
+                                    <div class="accordion">
+                                        <div class="accordion-section">
+                                            <div class="accordion-section-title" data-tab="#accordion-b-1">
+                                                Package Name
+                                            </div>
+                                            <div class="accordion-section-content" id="accordion-b-1">
+                                                <p>The package name to be identified with on store</p>
+                                                <input class="form-control" name='packagename'
+                                                    placeholder="e.g com.appname" type='text'>
+                                            </div>
+                                            <div class="accordion-section-title" data-tab="#accordion-b-2">
+                                                Bottom Navigation
+                                            </div>
+                                            <div class="accordion-section-content" id="accordion-b-2">
+                                                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+                                                    praesentium voluptatum deleniti atque corrupti quos dolores et quas
+                                                    molestias excepturi sint occaecati cupiditate non provident, similique
+                                                    sunt in culpa qui officia deserunt mollitia animi, id est laborum et
+                                                    dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+                                                </p>
+                                            </div>
+                                            <div class="accordion-section-title" data-tab="#accordion-b-3">
+                                                Admob
+                                            </div>
+                                            <div class="accordion-section-content" id="accordion-b-3">
+                                                <p>Selecting yes means you want to monetize your app</p>
+                                                <select name="admob" class="form-control">
+                                                    <option>No</option>
+                                                    <option>Yes</option>
+                                                </select>
+                                                <input class="form-control" name='admobID' placeholder="Admob ID"
+                                                    type='text'>
                                             </div>
 
                                         </div>
@@ -209,7 +253,7 @@
                             </div>
                         </div>
 
-                        
+
                     </div>
                 </div>
             </section>
