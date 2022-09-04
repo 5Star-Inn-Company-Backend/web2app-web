@@ -38,9 +38,14 @@ class MyController extends Controller
         $con->admob = $request->admob?? '';
         $con->admobID = $request->admobID ?? ' ';
         $con->publish = $request->publish ?? 'no';
+        $con->tabLinks = json_encode($request->tabLink);
+        $con->tabNames = json_encode($request->tabName);
+        $con->tabIcons = json_encode($request->tabIcon);
         $con->status = '0';
         $con->reference_code = "web2app_" .uniqid().rand();
         $con->save();
+
+        $reference = $con->reference_code;
 
         if ($input["plan"] == "basic") {
             $amount = 5000;
@@ -51,10 +56,13 @@ class MyController extends Controller
         } else {
             $amount = 0;
 
-            return redirect()->to("successpage/".$con->id."?".$con->reference_code);
-        }
+            $con->status = 1;
+            $con->save();
 
-        $reference = $con->reference_code;
+            StartBuildJob::dispatch($reference);
+
+            return view('successpage', ['reference' => $reference]);
+        }
 
         try {
             $curl = curl_init();

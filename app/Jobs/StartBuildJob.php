@@ -41,6 +41,25 @@ class StartBuildJob implements ShouldQueue
 
         if($conv){
             $fullscreen=strtolower($conv->fullscreen) == 'no' ? "false" : "true";
+            $enableAdvt=strtolower($conv->plan) == 'free' ? "true" : "false";
+
+            $tabLinks=json_decode($conv->tabLinks, true);
+            $tabNames=json_decode($conv->tabNames, true);
+            $tabIcons=json_decode($conv->tabIcons, true);
+
+            $menus=[];
+            $enableMenu="false";
+
+            for($i=0;$i<count($tabLinks);$i++){
+                if($tabIcons[$i] != null && $tabNames[$i] != null) {
+                    $tab['icon'] = $tabIcons[$i];
+                    $tab['label'] = $tabNames[$i];
+                    $tab['url'] = $tabLinks[$i];
+                    array_push($menus, $tab);
+                    $enableMenu="true";
+                }
+            }
+
 
             $config='{
   "public": {
@@ -49,29 +68,13 @@ class StartBuildJob implements ShouldQueue
     "userAgent": "web2app",
     "primaryColor": "'.$conv->primarycolor.'",
     "fullScreen": '.$fullscreen.',
-    "forceScreenOrientation": false
+    "forceScreenOrientation": false,
+    "enableAdvt": '.$enableAdvt.'
   },
   "navigations": {
     "tab": {
-      "menus": [
-        {
-          "icon": "Icons.home",
-          "label": "Main",
-          "url": "https://gonative.io"
-        },
-        {
-          "icon": "Icons.history",
-          "label": "Create Account",
-          "url": "https://trixwallet.com/mobileapp/register"
-        },
-        {
-          "subLinks": [],
-          "icon": "Icons.history",
-          "label": "GoNative Demo",
-          "url": "https://gonative.io/demo"
-        }
-      ],
-      "active": false
+      "menus": '.json_encode($menus).',
+      "active": '.$enableMenu.'
     },
     "drawer": {
       "items": [
@@ -169,15 +172,16 @@ class StartBuildJob implements ShouldQueue
 
             $input['reference_code']=$reference;
             $input['config']=$app_config;
+            $packageName=strtolower($conv->plan) == 'free' ? "com.web2app" : $conv->packagename;
             $build=Build::create($input);
 
             if($conv->plan=="premium"){
-                $appId="6309bcab44a74208bbd23469";
-                $workflowId="6309bcab44a74208bbd23468";
+                $appId=env('BUILD_APPID_PREMIUM');
+                $workflowId=env('BUILD_WORKFLOWID_PREMIUM');
                 $auth=env('BUILD_APIKEY_PREMIUM');
             }else{
-                $appId="62e4fc24f9c684a19c46b49d";
-                $workflowId="62e4fc24f9c684a19c46b49c";
+                $appId=env('BUILD_APPID');
+                $workflowId=env('BUILD_WORKFLOWID');
                 $auth=env('BUILD_APIKEY');
             }
 
@@ -201,7 +205,7 @@ class StartBuildJob implements ShouldQueue
         "variables": {
             "APP_CONFIG": "'.$app_config.'",
             "APP_NAME": "'.$conv->appname.'",
-            "APP_PACKAGE_NAME": "'.$conv->packagename.'",
+            "APP_PACKAGE_NAME": "'.$packageName.'",
             "APP_REFERENCE": "'.$reference.'",
             "APP_LOGO": "'.$conv->icon.'"
         },
