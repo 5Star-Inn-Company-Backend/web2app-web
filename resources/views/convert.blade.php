@@ -42,7 +42,7 @@
                                         <div class="spacer-single"></div>
                                         <h1>Convert Now</h1>
                                         <p class="lead">It is easy, just enter your website url, you can manage other
-                                            settings below.</p>
+                                            settings below.<br />All Payments are paid once</p>
 
                                         <div class="spacer-single"></div>
 
