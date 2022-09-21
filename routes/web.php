@@ -35,6 +35,10 @@ Route::get('/success', function () {
     return view('successpage');
 })->name('success');
 
+Route::get('/feed', function () {
+    return view('feedback');
+})->name('feed');
+
 
 //for the store
 
@@ -48,5 +52,6 @@ Route::get('/showstore', [StoreController::class, 'showstore'])->name('showstore
 Route::get('/viewstore/{id}', [StoreController::class, 'viewstore'])->name('viewstore');
 //for success page
 Route::get('/successpage/{id}', [MyController::class, 'success'])->name('successpage');
+Route::post('feedback', [MyController::class, 'feedback'])->name('feedback');
 //for payment
 Route::post('purchase', [StoreController::class, 'purchase']);

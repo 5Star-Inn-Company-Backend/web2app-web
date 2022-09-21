@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\StartBuildJob;
 use App\Models\convert;
+use App\Models\feedback;
+use App\Jobs\StartBuildJob;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -194,5 +195,16 @@ class MyController extends Controller
         }
 
         return view('successpage', ['reference' => $input['reference']]);
+    }
+
+    public function feedback(Request $request)
+    {
+       $feed = new feedback();
+    $feed->feedback = $request->feedback;
+    $feed->save();
+    if($feed->save())
+    {
+        return redirect()->back()->with('status', 'Thank you for your Feedback');
+    }
     }
 }

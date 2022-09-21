@@ -70,6 +70,7 @@
                                 <li><a href="{{route('welcome')}}">Home</a></li>
 {{--                                <li><a href="{{ route('showstore') }}">Store</a></li>--}}
                                 <li><a href="{{route('pricing')}}">Pricing</a></li>
+                                <li><a href="{{route('feed')}}">Feedback</a></li>
                             </ul>
                             <div class="col-right">
                                 <a class="btn-custom" href="{{route('convert')}}"><i class="fa fa-recycle"></i> Convert</a>
