@@ -2,7 +2,7 @@
 
 @extends('include.layouts')
 
-@section('content')
+@section('content') 
   <br><br><br><br>
      <form>
     <script src="https://korablobstorage.blob.core.windows.net/modal-bucket/korapay-collections.min.js"></script>

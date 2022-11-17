@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\convert;
 use App\Models\feedback;
 use App\Jobs\StartBuildJob;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class MyController extends Controller
@@ -36,21 +39,21 @@ class MyController extends Controller
         $con->fullscreen = $request->fullscreen;
         $con->primarycolor = $request->primarycolor;
         $con->packagename = $request->packagename ?? 'com.web2app';
-        $con->admob = $request->admob?? '';
+        $con->admob = $request->admob ?? '';
         $con->admobID = $request->admobID ?? ' ';
         $con->publish = $request->publish ?? 'no';
         $con->tabLinks = json_encode($request->tabLink);
         $con->tabNames = json_encode($request->tabName);
         $con->tabIcons = json_encode($request->tabIcon);
         $con->status = '0';
-        $con->reference_code = "web2app_" .uniqid().rand();
+        $con->reference_code = "web2app_" . uniqid() . rand();
         $con->save();
 
         $reference = $con->reference_code;
 
         if ($input["plan"] == "basic") {
             $amount = 5000;
-        }elseif ($input["plan"] == "gold") {
+        } elseif ($input["plan"] == "gold") {
             $amount = 10000;
         } elseif ($input["plan"] == "premium") {
             $amount = 20000;
@@ -80,10 +83,10 @@ class MyController extends Controller
                 CURLOPT_SSL_VERIFYPEER => false,
                 CURLOPT_POSTFIELDS => '{
     "amount": ' . $amount . ',
-    "redirect_url": " ' .route('successpage', $con->id) . ' ",
+    "redirect_url": " ' . route('successpage', $con->id) . ' ",
     "currency": "NGN",
     "reference": "' . $reference . '",
-    "narration": "Payment on '.$request->appname.', for Web2App '.$request->plan.' plan",
+    "narration": "Payment on ' . $request->appname . ', for Web2App ' . $request->plan . ' plan",
     "customer" : {
         "email" : " ' . $request->email . ' "
     }
@@ -105,7 +108,7 @@ class MyController extends Controller
             } else {
                 return back()->with('status', 'Error while processing payment');
             }
-        }catch (\Exception $e){
+        } catch (\Exception$e) {
             return back()->with('status', 'Fatai error while processing payment');
         }
 
@@ -137,23 +140,22 @@ class MyController extends Controller
 
     public function success($id, Request $request)
     {
-        $input=$request->all();
-        if(!isset($input['reference'])){
+        $input = $request->all();
+        if (!isset($input['reference'])) {
             return redirect()->route('welcome');
         }
 
         $convert = convert::where([['id', $id], ['reference_code', $input['reference']]])->first();
 
-        if(!$convert){
+        if (!$convert) {
             return redirect()->route('welcome');
         }
-
 
         try {
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
-                CURLOPT_URL => 'https://api.korapay.com/merchant/api/v1/charges/'.$input['reference'],
+                CURLOPT_URL => 'https://api.korapay.com/merchant/api/v1/charges/' . $input['reference'],
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
                 CURLOPT_MAXREDIRS => 10,
@@ -173,21 +175,20 @@ class MyController extends Controller
 
             curl_close($curl);
 
-
             $ref = json_decode($response, true);
 
             if ($ref['status']) {
                 if ($ref['data']['status'] != "success") {
                     return redirect()->route('convert')->with('status', 'Payment not successful');
                 }
-            }else{
+            } else {
                 return redirect()->route('convert')->with('status', 'Payment not found');
             }
-        }catch (\Exception $e){
+        } catch (\Exception$e) {
             return redirect()->route('convert')->with('status', 'Fatai error while processing payment');
         }
 
-        if($convert->status == 0) {
+        if ($convert->status == 0) {
             $convert->status = 1;
             $convert->save();
 
@@ -199,12 +200,36 @@ class MyController extends Controller
 
     public function feedback(Request $request)
     {
-       $feed = new feedback();
-    $feed->feedback = $request->feedback;
-    $feed->save();
-    if($feed->save())
-    {
-        return redirect()->back()->with('status', 'Thank you for your Feedback');
+        $feed = new feedback();
+        $feed->feedback = $request->feedback;
+        $feed->save();
+        if ($feed->save()) {
+            return redirect()->back()->with('status', 'Thank you for your Feedback');
+        }
     }
+
+    public function update(Request $request)
+    {
+
+        //validation
+        $val = $request->validate([
+            // 'email' => 'required',
+            'old_pass' => 'required',
+            'new_pass' => 'required|min:8',
+            'confirm_pass' => 'same:new_pass',
+        ]);
+//march password
+
+        if (!Hash::check($request->old_pass, Auth::user()->password)) {
+            return redirect()->back()->with("error","Old password dosent match");
+        }
+
+        //update password
+        User::where('id', Auth::user()->id)->update([
+            'password' => Hash::make($request->new_pass),
+        ]);
+        return redirect()->back()->with("status","Password Updated!");
+
+
     }
 }
