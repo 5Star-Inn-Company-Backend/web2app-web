@@ -118,6 +118,7 @@
 
                                                     <div class="accordion">
                                                         <div class="accordion-section">
+
                                                             <div class="accordion-section-title" data-tab="#accordion-b-0">
                                                                 Publish to Store
                                                             </div>
@@ -126,6 +127,13 @@
                                                                     <option value="no" selected>No</option>
                                                                     <option value="yes">Yes</option>
                                                                 </select>
+                                                            </div>
+
+                                                            <div class="accordion-section-title" data-tab="#accordion-b-1">
+                                                                Firebase (google-services.json)
+                                                            </div>
+                                                            <div class="accordion-section-content" id="accordion-b-1">
+                                                                <input type="file" name="firebase" class="form-control-file"/>
                                                             </div>
 
                                                             <div class="accordion-section-title" data-tab="#accordion-b-3">

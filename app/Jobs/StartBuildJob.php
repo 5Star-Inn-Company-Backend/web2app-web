@@ -174,6 +174,7 @@ class StartBuildJob implements ShouldQueue
             $input['config']=$app_config;
             $packageName=strtolower($conv->plan) == 'free' ? "com.web2app" : $conv->packagename;
             $build=Build::create($input);
+            $firebase=base64_encode($conv->firebase);
 
             if($conv->plan=="premium"){
                 $appId=env('BUILD_APPID_PREMIUM');
@@ -207,7 +208,8 @@ class StartBuildJob implements ShouldQueue
             "APP_NAME": "'.$conv->appname.'",
             "APP_PACKAGE_NAME": "'.$packageName.'",
             "APP_REFERENCE": "'.$reference.'",
-            "APP_LOGO": "'.$conv->icon.'"
+            "APP_LOGO": "'.$conv->icon.'",
+            "APP_FIREBASE": "'.$firebase.'"
         },
         "groups": [
             "variable_group_1",

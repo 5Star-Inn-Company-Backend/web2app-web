@@ -1,5 +1,6 @@
 <?php
 
+use App\Jobs\StartBuildJob;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MyController;
 use App\Http\Controllers\HomeController;
@@ -17,10 +18,35 @@ use App\Http\Controllers\Auth\LoginController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name("welcome");
+    Route::get('/', function () {
+        return view('welcome');
+    })->name("welcome");
 
+
+    Route::post('/convert', [MyController::class, 'convert'])->name('submitconvert');
+    //for success page
+    Route::get('/successpage/{id}', [MyController::class, 'success'])->name('successpage');
+
+    Route::get('/pricing', function () {
+        return view('pricing');
+    })->name('pricing');
+
+    Route::get('/convert', function () {
+        return view('convert');
+    })->name('convert');
+
+    Route::get('/payment', function () {
+        return view('payment');
+    })->name('payment');
+
+    Route::get('/success', function () {
+        return view('successpage');
+    })->name('success');
+
+
+    Route::post('/store', [StoreController::class, 'addstore'])->name('submitstore');
+    Route::get('/showstore', [StoreController::class, 'showstore'])->name('showstore');
+    Route::get('/viewstore/{id}', [StoreController::class, 'viewstore'])->name('viewstore');
 
 
 
@@ -33,54 +59,33 @@ Route::get('/', function () {
     })->name('createstore');
 
 
-    Route::post('/convert', [MyController::class, 'convert'])->name('submitconvert');
-Route::post('/store', [StoreController::class, 'addstore'])->name('submitstore');
-Route::get('/showstore', [StoreController::class, 'showstore'])->name('showstore');
-Route::get('/viewstore/{id}', [StoreController::class, 'viewstore'])->name('viewstore');
-//for success page
-Route::get('/successpage/{id}', [MyController::class, 'success'])->name('successpage');
-Route::post('feedback', [MyController::class, 'feedback'])->name('feedback');
-//for payment
-Route::post('purchase', [StoreController::class, 'purchase']);
+    Route::post('feedback', [MyController::class, 'feedback'])->name('feedback');
+    //for payment
+    Route::post('purchase', [StoreController::class, 'purchase']);
 
-Auth::routes();
+    Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-//for change password
-Route::post('update', [MyController::class, 'update'])->name('update');
-// Route::post('updatepass', [MyController::class, 'updatepass'])->name('updatepass');        
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
-Route::get('/pricing', function () {
-    return view('pricing');
-})->name('pricing');
+    //for change password
+    Route::post('update', [MyController::class, 'update'])->name('update');
+    // Route::post('updatepass', [MyController::class, 'updatepass'])->name('updatepass');
 
-Route::get('/convert', function () {
-    return view('convert');
-})->name('convert');
+    Route::get('/feed', function () {
+        return view('feedback');
+    })->name('feed');
 
-Route::get('/payment', function () {
-    return view('payment');
-})->name('payment');
-
-Route::get('/success', function () {
-    return view('successpage');
-})->name('success');
-
-Route::get('/feed', function () {
-    return view('feedback');
-})->name('feed');
-
-Route::get('/changepass', function () {
-    return view('changepass');
-})->name('changepass');
+    Route::get('/changepass', function () {
+        return view('changepass');
+    })->name('changepass');
 
 // });
+
+    Route::get('/retry/{ref}', function ($ref) {
+        StartBuildJob::dispatch($ref);
+        echo "success";
+    })->name('success');
 
 
 

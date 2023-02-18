@@ -49,111 +49,47 @@
 </head>
 
 <body class="dark-mode text-light disable-dark">
-    <div id="wrapper">
+<div id="wrapper">
 
 
-        <!-- header begin -->
-        <header>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
+    <!-- header begin -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
 
-                        <div class="header-row">
-                            <div class="header-col left">
-                                <!-- logo begin -->
-                                <div id="logo">
-                                    <a href="/"><img alt="" class="logo" src="/images/w2a.jpg"
-                                            width="50px" height="50px"> <img alt="" class="logo-2"
-                                            src="/images/w2a.jpg" width="50px" height="50px"></a>
-                                </div>
-                                <!-- logo close -->
+                    <div class="header-row">
+                        <div class="header-col left">
+                            <!-- logo begin -->
+                            <div id="logo">
+                                <a href="/"><img alt="" class="logo" src="/images/w2a.jpg" width="50px" height="50px"> <img alt="" class="logo-2" src="/images/w2a.jpg" width="50px" height="50px"></a>
                             </div>
-                            <div class="header-col mid">
-
-                                <ul class="navbar-nav ms-auto">
-                                    <!-- Authentication Links -->
-
-                                    <!-- Right Side Of Navbar -->
-                                    <ul class="navbar-nav ms-auto">
-                                        <!-- Authentication Links -->
-                                        @auth()
-                                            <ul id="mainmenu">
-                                                <li class="nav-item dropdown">
-                                                    <a id="navbarDropdown" class="nav-link dropdown-toggle"
-                                                        href="#" role="button" data-bs-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false" v-pre>
-                                                        {{ Auth::user()->name }}
-                                                    </a>
-
-                                                    <div class="dropdown-menu dropdown-menu-right"
-                                                        aria-labelledby="navbarDropdown">
-                                                        <a href="{{ route('changepass') }}" class="dropdown-item text-dark">Change
-                                                            Password</a>
-
-                                                        <a class="dropdown-item text-dark" href="{{ route('logout') }}"
-                                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                                            {{ __('Logout') }}
-                                                        </a>
-
-                                                        <form id="logout-form" action="{{ route('logout') }}"
-                                                            method="POST" class="d-none">
-                                                            @csrf
-                                                        </form>
-                                                    </div>
-                                                </li>
-
-
-                                                <li><a href="{{ route('welcome') }}">Home</a></li>
-                                                {{--                                <li><a href="{{ route('showstore') }}">Store</a></li> --}}
-                                                <li><a href="{{ route('pricing') }}">Pricing</a></li>
-                                                <li><a href="{{ route('feed') }}">Feedback</a></li>
-                                                {{-- <li><a href="{{ route('login') }}">Login</a></li> --}}
-
-                                                <div class="col-right">
-                                                    <a class="btn-custom" href="{{ route('convert') }}"><i
-                                                            class="fa fa-recycle"></i> Convert</a>
-                                                </div>
-                                            </ul>
-                                        @else
-                                            <ul id="mainmenu">
-
-                                                @if (Route::has('login'))
-                                                    <li class="nav-item">
-                                                        <a class="nav-link"
-                                                            href="{{ route('login') }}">{{ __('Login') }}</a>
-                                                    </li>
-                                                @endif
-
-                                                @if (Route::has('register'))
-                                                    <li class="nav-item">
-                                                        <a class="nav-link"
-                                                            href="{{ route('register') }}">{{ __('Register') }}</a>
-                                                    </li>
-                                                @endif
-
-
-
-                                            </ul>
-                                        @endauth
-                                    </ul>
-                                </ul>
-                                <!-- mainmenu begin -->
-
-                            </div>
-                            <div class="clearfix"></div>
+                            <!-- logo close -->
                         </div>
-                        <!-- small button begin -->
-                        <span id="menu-btn"></span>
-                        <!-- small button close -->
-
+                        <div class="header-col mid">
+                            <!-- mainmenu begin -->
+                            <ul id="mainmenu">
+                                <li><a href="{{route('welcome')}}">Home</a></li>
+{{--                                <li><a href="{{ route('showstore') }}">Store</a></li>--}}
+                                <li><a href="{{route('pricing')}}">Pricing</a></li>
+                            </ul>
+                            <div class="col-right">
+                                <a class="btn-custom" href="{{route('convert')}}"><i class="fa fa-recycle"></i> Convert</a>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
+                    <!-- small button begin -->
+                    <span id="menu-btn"></span>
+                    <!-- small button close -->
+
                 </div>
             </div>
-        </header>
-        <!-- header close -->
-        <!-- content begin -->
-        @yield('content')
+        </div>
+    </header>
+    <!-- header close -->
+    <!-- content begin -->
+    @yield('content')
 
         <!-- content close -->
 

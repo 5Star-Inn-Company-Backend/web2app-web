@@ -22,12 +22,19 @@ class MyController extends Controller
             'url' => 'required|max:255',
             'plan' => 'required',
             'appname' => 'required',
+            'firebase' => 'nullable|mimes:json',
         ]);
 
         if ($validator->fails()) {
             return back()
                 ->withErrors($validator)
                 ->withInput();
+        }
+
+        if(isset($input['firebase'])) {
+            $firebase = file_get_contents($input['firebase']);
+        }else{
+            $firebase=' ';
         }
 
         $con = new convert;
@@ -46,6 +53,7 @@ class MyController extends Controller
         $con->tabNames = json_encode($request->tabName);
         $con->tabIcons = json_encode($request->tabIcon);
         $con->status = '0';
+        $con->firebase = $firebase;
         $con->reference_code = "web2app_" . uniqid() . rand();
         $con->save();
 
