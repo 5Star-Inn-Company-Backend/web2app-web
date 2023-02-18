@@ -66,7 +66,7 @@
                                             <li><i class="fa fa-check-square"></i>Push Notification</li>
                                             <li><i class="fa fa-check-square"></i>Priority Support</li>
                                             <li><i class="fa fa-check-square"></i>Ownership & Certification</li>
-                                            <li><i class="fa fa-check-square"></i>Publishable to Store</li>
+                                            <li><i class="fa fa-check-square"></i>Sharable APK</li>
                                         </ul>
                                     </div>
 
