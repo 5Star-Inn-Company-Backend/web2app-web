@@ -33,7 +33,7 @@ class MyController extends Controller
 
 
         if(strtolower($request->plan) == 'free'){
-            $firebase='{ "project_info": { "project_number": "1080396428959", "project_id": "web2app-d11fc", "storage_bucket": "web2app-d11fc.appspot.com" }, "client": [ { "client_info": { "mobilesdk_app_id": "1:1080396428959:android:6d512f6266cd038855d4aa", "android_client_info": { "package_name": "com.web2app" } }, "oauth_client": [ { "client_id": "1080396428959-jpoaif5pd801h25t287ubr832c7ot4st.apps.googleusercontent.com", "client_type": 3 } ], "api_key": [ { "current_key": "AIzaSyDBErNkmTbXfUYhToq2ZHwhM7zyYWLntGA" } ], "services": { "appinvite_service": { "other_platform_oauth_client": [ { "client_id": "1080396428959-jpoaif5pd801h25t287ubr832c7ot4st.apps.googleusercontent.com", "client_type": 3 } ] } } } ], "configuration_version": "1" }';
+            $firebase=env('DEFAULT_PUSH_NOTIFICATION');
         }else{
             if(isset($input['firebase'])) {
                 $firebase = file_get_contents($input['firebase']);
