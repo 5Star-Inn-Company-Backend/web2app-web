@@ -80,12 +80,12 @@ class StartBuildJob implements ShouldQueue
       "items": [
         {
           "label": "Sample Home",
-          "url": "https://gonative.io",
+          "url": "https://trixwallet.com",
           "icon": "fas fa-home"
         },
         {
           "label": "Sample About",
-          "url": "https://gonative.io/about",
+          "url": "https://trixwallet.com/about",
           "icon": "fas fa-user"
         }
       ],
@@ -118,6 +118,21 @@ class StartBuildJob implements ShouldQueue
     "deepLinkDomains": {
       "domains": [],
       "enableAndroidApplinks": false
+    },
+    "dynamicLink": {
+      "enableDynamicLink": true,
+      "uriPrefix": "https://web2app.page.link",
+      "linkPrefix": "https://web2app.app/link",
+      "android" : {
+        "enable": true,
+        "packageName": "'.$conv->packagename.'",
+        "minimumVersion": "1"
+      },
+      "ios" : {
+        "enable": true,
+        "bundleId": "'.$conv->packagename.'",
+        "minimumVersion": "1"
+      }
     }
   },
   "styling": {

@@ -59,6 +59,8 @@ class MyController extends Controller
         $con->tabNames = json_encode($request->tabName);
         $con->tabIcons = json_encode($request->tabIcon);
         $con->status = '0';
+        $con->uriPrefix = $request->uriPrefix ?? '';
+        $con->linkPrefix = $request->linkPrefix ?? '';
         $con->firebase = $firebase;
         $con->reference_code = "web2app_" . uniqid() . rand();
         $con->save();

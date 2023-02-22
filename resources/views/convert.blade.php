@@ -136,6 +136,15 @@
                                                                 <input type="file" name="firebase" class="form-control-file"/>
                                                             </div>
 
+                                                            <div class="accordion-section-title" data-tab="#accordion-b-2">
+                                                                Dynamic Link
+                                                            </div>
+                                                            <div class="accordion-section-content" id="accordion-b-2">
+                                                                <p>Kindly enter the Uri Prefix then followed by Link Prefix</p>
+                                                                <input class="form-control" name='uriPrefix' placeholder="e.g https://web2app.page.link" type='url'>
+                                                                <input class="form-control" name='linkPrefix' placeholder="e.g https://web2app.app/link" type='url'>
+                                                            </div>
+
                                                             <div class="accordion-section-title" data-tab="#accordion-b-3">
                                                                 Admob
                                                             </div>
