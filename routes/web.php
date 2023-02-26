@@ -63,7 +63,7 @@ use App\Http\Controllers\Auth\LoginController;
     //for payment
     Route::post('purchase', [StoreController::class, 'purchase']);
 
-    Auth::routes();
+//    Auth::routes();
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
