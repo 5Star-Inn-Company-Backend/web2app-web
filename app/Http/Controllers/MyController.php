@@ -38,7 +38,7 @@ class MyController extends Controller
             if(isset($input['firebase'])) {
                 $firebase = file_get_contents($input['firebase']);
             }else {
-                $firebase = '{}';
+                $firebase = env('DEFAULT_PUSH_NOTIFICATION');
             }
         }
 
