@@ -26,11 +26,14 @@ Route::get('/bucket/{reference}/{type}', function ($reference,$type) {
     if (!File::exists($path)) {
         abort(404);
     }
+
     $file = File::get($path);
-    $type = File::mimeType($path);
+    $ftype = File::mimeType($path);
 
     $response = Response::make($file, 200);
-    $response->header("Content-Type", $type);
+    $response->header("Content-Type", $ftype);
+    $response->header("Content-Disposition", "attachment; filename=\"$reference.$type\"");
+    $response->header("Content-Length", File::size($path));
     return $response;
 })->name('bucket.download');
 

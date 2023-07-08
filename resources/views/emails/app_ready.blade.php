@@ -18,7 +18,7 @@ Download AAB
 
 @if($ios != "")
 @component('mail::button', ['url' => $ios])
-Download Runner.app.zip
+Download Runner_app.zip
 @endcomponent
 @endif
 
