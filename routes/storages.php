@@ -15,10 +15,10 @@ use App\Models\Build;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/bucket/{reference}/{type}', function ($reference,$type) {
-    $build=Build::where(['reference_code' => $reference])->latest()->first();
+Route::get('/bucket/{reference}/{type}', function ($reference, $type) {
+    $build = Build::where(['reference_code' => $reference])->latest()->first();
 
-    if(!$build){
+    if (!$build) {
         abort(403);
     }
     $path = storage_path('app/public/artifacts/' . "$reference.$type");
@@ -28,7 +28,11 @@ Route::get('/bucket/{reference}/{type}', function ($reference,$type) {
     }
 
     $file = File::get($path);
-    $ftype = File::mimeType($path);
+    if ($type == "apk") {
+        $ftype = "application/vnd.android.package-archive";
+    } else {
+        $ftype = File::mimeType($path);
+    }
 
     $response = Response::make($file, 200);
     $response->header("Content-Type", $ftype);
