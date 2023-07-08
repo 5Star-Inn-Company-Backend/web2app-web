@@ -23,9 +23,10 @@ class GetBuildJob implements ShouldQueue
      * @return void
      */
     public $reference;
+
     public function __construct($reference)
     {
-        $this->reference=$reference;
+        $this->reference = $reference;
     }
 
 
@@ -37,26 +38,26 @@ class GetBuildJob implements ShouldQueue
     public function handle()
     {
 
-        $reference=$this->reference;
+        $reference = $this->reference;
 
-        $conv=convert::where(['reference_code' => $reference, 'status' => 1])->latest()->first();
+        $conv = convert::where(['reference_code' => $reference, 'status' => 1])->latest()->first();
 
-        if($conv) {
+        if ($conv) {
 
-            $build=Build::where(['reference_code' => $reference])->latest()->first();
+            $build = Build::where(['reference_code' => $reference])->latest()->first();
 
-            if($build){
+            if ($build) {
 
-                if($conv->plan=="premium"){
-                    $auth=env('BUILD_APIKEY_PREMIUM');
-                }else{
-                    $auth=env('BUILD_APIKEY');
+                if ($conv->plan == "premium") {
+                    $auth = env('BUILD_APIKEY_PREMIUM');
+                } else {
+                    $auth = env('BUILD_APIKEY');
                 }
 
                 $curl = curl_init();
 
                 curl_setopt_array($curl, array(
-                    CURLOPT_URL => 'https://api.codemagic.io/builds/'.$build->build_id,
+                    CURLOPT_URL => 'https://api.codemagic.io/builds/' . $build->build_id,
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_ENCODING => '',
                     CURLOPT_MAXREDIRS => 10,
@@ -75,56 +76,59 @@ class GetBuildJob implements ShouldQueue
                 curl_close($curl);
 //                echo $response;
 
-                $resp=json_decode($response, true);
+                $resp = json_decode($response, true);
 
-                $build->server_response=$response;
+                $build->server_response = $response;
 
-                $android="";
-                $aab="";
-                $ios="";
+                $android = "";
+                $aab = "";
+                $ios = "";
+
+                $local_url_aab = "";
+                $local_url_ios = "";
 
 
-                foreach ($resp['build']['artefacts'] as $artefact){
-                    if($artefact['type'] == "apk") {
+                foreach ($resp['build']['artefacts'] as $artefact) {
+                    if ($artefact['type'] == "apk") {
                         $android = $artefact['url'];
                     }
 
-                    if($artefact['type'] == "aab") {
+                    if ($artefact['type'] == "aab") {
                         $aab = $artefact['url'];
                     }
 
-                    if($artefact['type'] == "app") {
+                    if ($artefact['type'] == "app") {
                         $ios = $artefact['url'];
                     }
                 }
 
-                $build->android_link=$android;
-                $build->ios_link=$ios;
-                $build->status=1;
+                $build->android_link = $android;
+                $build->ios_link = $ios;
+                $build->status = 1;
                 $build->save();
 
-                if($conv->plan=="basic"){
-                    $aab="";
+                if ($conv->plan == "basic") {
+                    $aab = "";
                 }
 
-                $this->downloadAndSave($android,$reference,"apk",$auth);
-                if($aab!= ""){
-                    $this->downloadAndSave($aab,$reference,"aab",$auth);
-                }
-                if($ios != ""){
-                    $this->downloadAndSave($ios,$reference,"zip",$auth);
-                }
+                $this->downloadAndSave($android, $reference, "apk", $auth);
+                $local_url_apk = route('bucket.download', [$reference, "apk"]);
 
-                $local_url_apk=route('bucket.download',[$reference,"apk"]);
-                $local_url_aab=route('bucket.download',[$reference,"aab"]);
-                $local_url_ios=route('bucket.download',[$reference,"zip"]);
+                if ($aab != "") {
+                    $this->downloadAndSave($aab, $reference, "aab", $auth);
+                    $local_url_aab = route('bucket.download', [$reference, "aab"]);
+                }
+                if ($ios != "") {
+                    $this->downloadAndSave($ios, $reference, "zip", $auth);
+                    $local_url_ios = route('bucket.download', [$reference, "zip"]);
+                }
 
                 Mail::to($conv->email)->send(new AppReadyMail($reference, $local_url_apk, $local_url_aab, $local_url_ios));
             }
         }
     }
 
-    private function downloadAndSave($url,$reference,$type,$auth)
+    private function downloadAndSave($url, $reference, $type, $auth)
     {
 
         $filename = "$reference.$type"; // Desired filename for the downloaded file
