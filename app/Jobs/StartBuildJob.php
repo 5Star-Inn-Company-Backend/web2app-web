@@ -200,6 +200,8 @@ class StartBuildJob implements ShouldQueue
                 $workflowId=env('BUILD_WORKFLOWID');
                 $auth=env('BUILD_APIKEY');
             }
+            $xcode_version=env('BUILD_XCODE_VERSION', "latest");
+            $branch=env('BUILD_BRANCH', "main");
 
             $curl = curl_init();
 
@@ -216,7 +218,7 @@ class StartBuildJob implements ShouldQueue
                 CURLOPT_POSTFIELDS => '{
     "appId": "'.$appId.'",
     "workflowId": "'.$workflowId.'",
-    "branch": "main",
+    "branch": "'.$branch.'",
     "environment": {
         "variables": {
             "APP_CONFIG": "'.$app_config.'",
@@ -231,7 +233,7 @@ class StartBuildJob implements ShouldQueue
             "variable_group_2"
         ],
         "softwareVersions": {
-            "xcode": "13.4.1",
+            "xcode": "'.$xcode_version.'",
             "flutter": "default"
         }
     }
