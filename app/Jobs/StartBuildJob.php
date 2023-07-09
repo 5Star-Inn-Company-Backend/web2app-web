@@ -231,11 +231,7 @@ class StartBuildJob implements ShouldQueue
         "groups": [
             "variable_group_1",
             "variable_group_2"
-        ],
-        "softwareVersions": {
-            "xcode": "'.$xcode_version.'",
-            "flutter": "default"
-        }
+        ]
     }
 }',
                 CURLOPT_HTTPHEADER => array(
