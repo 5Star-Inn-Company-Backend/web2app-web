@@ -202,6 +202,7 @@ class StartBuildJob implements ShouldQueue
             }
             $xcode_version=env('BUILD_XCODE_VERSION', "latest");
             $branch=env('BUILD_BRANCH', "main");
+            $app_version=env('APP_VERSION', "1");
 
             $curl = curl_init();
 
@@ -226,6 +227,7 @@ class StartBuildJob implements ShouldQueue
             "APP_PACKAGE_NAME": "'.$packageName.'",
             "APP_REFERENCE": "'.$reference.'",
             "APP_LOGO": "'.$conv->icon.'",
+            "APP_VERSION": "'.$app_version.'",
             "APP_FIREBASE": "'.$firebase.'"
         },
         "groups": [
