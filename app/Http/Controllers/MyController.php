@@ -42,6 +42,17 @@ class MyController extends Controller
             }
         }
 
+        if(isset($request->packagename)){
+            if(!str_contains($request->packagename,'com.')){
+                $packageName="com.".strtolower($request->packagename);
+            }else{
+                $packageName=strtolower($request->packagename);
+            }
+
+        }else{
+            $packageName='com.web2app';
+        }
+
 
         $con = new convert;
         $con->url = $request->url;
@@ -51,7 +62,7 @@ class MyController extends Controller
         $con->icon = $request->icon ?? 'https://web2app.5starcompany.com.ng/images/w2a.jpg';
         $con->fullscreen = $request->fullscreen;
         $con->primarycolor = $request->primarycolor;
-        $con->packagename = $request->packagename ?? 'com.web2app';
+        $con->packagename = $packageName;
         $con->admob = $request->admob ?? '';
         $con->admobID = $request->admobID ?? ' ';
         $con->publish = $request->publish ?? 'no';
