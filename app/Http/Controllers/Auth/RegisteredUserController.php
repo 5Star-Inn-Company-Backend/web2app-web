@@ -27,6 +27,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', Rules\Password::defaults()],
+            'role_id' => ['nullable', 'sometimes', 'integer', 'exists:roles,id']
         ]);
 
         
@@ -35,6 +36,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role_id' => 1
         ]);
 
         event(new Registered($user));
