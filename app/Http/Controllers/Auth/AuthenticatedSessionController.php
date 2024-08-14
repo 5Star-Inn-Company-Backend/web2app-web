@@ -21,7 +21,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return response()->noContent();
+        return response()->json([
+            "status" => true,
+            "message" => "User loggedin successfully",
+            "data" => $request->user()
+        ]); 
     }
 
     /**

@@ -43,6 +43,7 @@ class Kernel extends HttpKernel
             \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            'json'
         ],
 
         'cors' => [
@@ -68,6 +69,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \App\Http\Middleware\EnsureEmailIsVerified::class,
         // 'cors' => \Barryvdh\Cors\HandleCors::class,
+        'json' => \App\Http\Middleware\ForceJsonResponse::class
             
     ];
 }
