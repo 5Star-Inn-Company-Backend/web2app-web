@@ -46,9 +46,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
-    public function role():HasOne
+    public function setPasswordAttribute($value)
     {
-        return $this->hasOne(Role::class);
+        $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function getPlainPasswordAttribute()
+    {
+        return $this->attributes['plain_password'];
+    }
+
+
+
+
+    public function role():BelongsTo
+    {
+        return $this->belongsTo(Role::class);
     }
 }

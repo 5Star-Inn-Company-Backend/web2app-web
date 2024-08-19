@@ -7,6 +7,7 @@ use App\Http\Resources\MemberResource;
 use App\Mail\InvitationMailToMember;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
@@ -19,7 +20,7 @@ class ManageMemberController extends Controller
      */
     public function index()
     {
-        return new MemberResource(User::with('role')->get());
+        return MemberResource::collection(User::with('role')->get());
     }
 
     /**
@@ -31,9 +32,11 @@ class ManageMemberController extends Controller
     public function store(UpsertMemberRequest $request)
     {
         $validatedData = $request->validated();
-        $user = User::create(array_merge($validatedData, ['password' => Str::random(10)]));
-        Mail::to($user->email)->send(new InvitationMailToMember($user));
+        $password = Str::random(10);
+        $user = User::create(array_merge($validatedData, ['password' => Hash::make($password)]));
+        Mail::to($user->email)->send(new InvitationMailToMember($user, $password));
         return new MemberResource($user);
+
     }
 
     /**
@@ -42,9 +45,9 @@ class ManageMemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(User $member)
     {
-        return new MemberResource($user);
+        return new MemberResource($member);
     }
 
     /**
@@ -54,10 +57,10 @@ class ManageMemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpsertMemberRequest $request, User $user)
+    public function update(UpsertMemberRequest $request, User $member)
     {
-        $user->update($request->validated());
-        return new MemberResource($user);
+        $member->update($request->validated());
+        return new MemberResource($member);
     }
 
     /**
@@ -66,9 +69,9 @@ class ManageMemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(User $member)
     {
-        $user->delete();
+        $member->delete();
         return ['Member deleted successfully'];
     }
 }

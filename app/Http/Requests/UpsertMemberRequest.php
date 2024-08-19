@@ -27,7 +27,7 @@ class UpsertMemberRequest extends FormRequest
         return [
             'name' => ['required', 'string'],
             'email' => ['required', 'email', 'string', Rule::unique('users', 'email')->ignore($this->member)],
-            'role_id' => ['required', 'integer', 'exists:users,id']
+            'role_id' => ['required', 'integer', 'exists:roles,id']
         ];
     }
 }
