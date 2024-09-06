@@ -43,10 +43,13 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
+       $token = $user->createToken($user->name.'-AuthToken')->plainTextToken;
+
         return response()->json([
             "status" => true,
             "message" => "User created successfully created",
-            "data" => $user
+            "data" => $user,
+            'access_token' => $token,
         ]); 
     }
 }

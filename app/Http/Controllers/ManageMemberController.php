@@ -19,8 +19,8 @@ class ManageMemberController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return MemberResource::collection(User::with('role')->get());
+    { 
+        return MemberResource::collection(User::where('user_id', auth()->id())->with('role')->get());
     }
 
     /**
@@ -33,8 +33,12 @@ class ManageMemberController extends Controller
     {
         $validatedData = $request->validated();
         $password = Str::random(10);
-        $user = User::create(array_merge($validatedData, ['password' => Hash::make($password)]));
-        Mail::to($user->email)->send(new InvitationMailToMember($user, $password));
+        $user = User::create(array_merge($validatedData, [
+            'user_id' => auth()->id(), 
+            'password' => Hash::make($password),
+            
+        ]));
+                Mail::to($user->email)->send(new InvitationMailToMember($user, $password));
         return new MemberResource($user);
 
     }

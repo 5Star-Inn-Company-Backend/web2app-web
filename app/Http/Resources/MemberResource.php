@@ -18,7 +18,7 @@ class MemberResource extends JsonResource
         return  [
             'name' => $this->name,
             'email' => $this->email,
-            'role' => $this->whenLoaded('role')
+            'role' => $this->whenLoaded('role'),
         ];
     }
 }

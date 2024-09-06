@@ -19,4 +19,4 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('member', ManageMemberController::class);
+Route::apiResource('member', ManageMemberController::class)->middleware('auth:sanctum');
