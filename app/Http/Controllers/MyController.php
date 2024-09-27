@@ -9,6 +9,7 @@ use App\Jobs\StartBuildJob;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
 class MyController extends Controller
@@ -16,6 +17,7 @@ class MyController extends Controller
 
     public function convert(Request $request)
     {
+         
         $input = $request->all();
 
         $validator = Validator::make($request->all(), [
@@ -54,27 +56,33 @@ class MyController extends Controller
         }
 
 
-        $con = new convert;
-        $con->url = $request->url;
-        $con->email = $request->email;
-        $con->plan = $request->plan;
-        $con->appname = $request->appname;
-        $con->icon = $request->icon ?? 'https://web2app.5starcompany.com.ng/images/w2a.jpg';
-        $con->fullscreen = $request->fullscreen;
-        $con->primarycolor = $request->primarycolor;
-        $con->packagename = $packageName;
-        $con->admob = $request->admob ?? '';
-        $con->admobID = $request->admobID ?? ' ';
-        $con->publish = $request->publish ?? 'no';
-        $con->tabLinks = json_encode($request->tabLink);
-        $con->tabNames = json_encode($request->tabName);
-        $con->tabIcons = json_encode($request->tabIcon);
-        $con->status = '0';
-        $con->uriPrefix = $request->uriPrefix ?? '';
-        $con->linkPrefix = $request->linkPrefix ?? '';
-        $con->firebase = $firebase;
-        $con->reference_code = "web2app_" . uniqid() . rand();
-        $con->save();
+        $con = Convert::updateOrCreate(
+            [
+                'url' => $request->url, 
+                'email' => $request->email
+            ],
+            [
+                'plan' => $request->plan, 
+                'appname' => $request->appname,
+                'icon' => $request->icon ?? 'https://web2app.5starcompany.com.ng/images/w2a.jpg',
+                'fullscreen' => $request->fullscreen,
+                'primarycolor' => $request->primarycolor,
+                'packagename' => $packageName,
+                'admob' => $request->admob ?? '',
+                'admobID' => $request->admobID ?? ' ',
+                'publish' => $request->publish ?? 'no',
+                'tabLinks' => json_encode($request->tabLink),
+                'tabNames' => json_encode($request->tabName),
+                'tabIcons' => json_encode($request->tabIcon),
+                'status' => '0',
+                'uriPrefix' => $request->uriPrefix ?? '',
+                'linkPrefix' => $request->linkPrefix ?? '',
+                'firebase' => $firebase,
+                'reference_code' => "web2app_" . uniqid() . rand()
+            ]
+        );
+        
+        // $con->save();
 
         $reference = $con->reference_code;
 
