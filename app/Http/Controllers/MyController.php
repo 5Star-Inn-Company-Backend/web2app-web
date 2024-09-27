@@ -19,13 +19,13 @@ class MyController extends Controller
     {
          
         $input = $request->all();
-
         $validator = Validator::make($request->all(), [
             'url' => 'required|max:255',
             'plan' => 'required',
             'appname' => 'required',
             'firebase' => 'nullable|mimes:json',
         ]);
+        
 
         if ($validator->fails()) {
             return back()
@@ -33,17 +33,19 @@ class MyController extends Controller
                 ->withInput();
         }
 
-
+         
         if(strtolower($request->plan) == 'free'){
             $firebase=env('DEFAULT_PUSH_NOTIFICATION');
+            
         }else{
             if(isset($input['firebase'])) {
                 $firebase = file_get_contents($input['firebase']);
             }else {
                 $firebase = env('DEFAULT_PUSH_NOTIFICATION');
             }
+           
         }
-
+        
         if(isset($request->packagename)){
             if(!str_contains($request->packagename,'com.')){
                 $packageName="com.".strtolower($request->packagename);
@@ -56,7 +58,7 @@ class MyController extends Controller
         }
 
 
-        $con = Convert::updateOrCreate(
+        $con = convert::updateOrCreate(
             [
                 'url' => $request->url, 
                 'email' => $request->email
