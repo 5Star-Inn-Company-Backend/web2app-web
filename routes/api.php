@@ -22,4 +22,4 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 
 Route::apiResource('member', ManageMemberController::class)->middleware('auth:sanctum');
 
-Route::post("convertApp", [MyController::class, "convert"])->middleware('auth:sanctum');
+Route::post("app/convert", [MyController::class, "convert"])->middleware('auth:sanctum');
