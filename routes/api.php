@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CreateAppController;
 use App\Http\Controllers\ManageMemberController;
 use App\Http\Controllers\MyController;
 use Illuminate\Http\Request;
@@ -23,3 +24,5 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 Route::apiResource('member', ManageMemberController::class)->middleware('auth:sanctum');
 
 Route::post("app/convert", [MyController::class, "convert"])->middleware('auth:sanctum');
+
+Route::post("app", CreateAppController::class)->middleware('auth:sanctum');
