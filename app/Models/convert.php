@@ -25,5 +25,6 @@ class convert extends Model
         'admobID',
         'status',
         'reference_code',
+        'app_id'
     ];
 }

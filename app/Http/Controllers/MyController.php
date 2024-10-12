@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\convert;
 use App\Models\feedback;
 use App\Jobs\StartBuildJob;
+use App\Models\App;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -15,14 +16,12 @@ use Illuminate\Support\Facades\Validator;
 class MyController extends Controller
 {
 
-    public function convert(Request $request)
+    public function convert(Request $request, App $app)
     {
          
         $input = $request->all();
         $validator = Validator::make($request->all(), [
-            'url' => 'required|max:255',
             'plan' => 'required',
-            'appname' => 'required',
             'firebase' => 'nullable|mimes:json',
         ]);
         
@@ -60,12 +59,11 @@ class MyController extends Controller
 
         $con = convert::updateOrCreate(
             [
-                'url' => $request->url, 
-                'email' => $request->email
+                'app_id' => $request->app_id,      
             ],
             [
+                'email' => $request->email,
                 'plan' => $request->plan, 
-                'appname' => $request->appname,
                 'icon' => $request->icon ?? 'https://web2app.5starcompany.com.ng/images/w2a.jpg',
                 'fullscreen' => $request->fullscreen,
                 'primarycolor' => $request->primarycolor,
