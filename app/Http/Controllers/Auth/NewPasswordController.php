@@ -25,15 +25,14 @@ class NewPasswordController extends Controller
     {
         $request->validate([
             'token' => ['required'],
-            'current_password' => ['required', 'current_password'],
+            'email' => ['required', 'email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-
         // Here we will attempt to reset the user's password. If it is successful we
         // will update the password on an actual user model and persist it to the
         // database. Otherwise we will parse the error and return the response.
         $status = Password::reset(
-            $request->only('current_password','password', 'password_confirmation', 'token'),
+            $request->only('email','password', 'password_confirmation', 'token'),
             function ($user) use ($request) {
                 $user->forceFill([
                     'password' => Hash::make($request->password),
@@ -44,10 +43,16 @@ class NewPasswordController extends Controller
             }
         );
 
-        if ($status != Password::PASSWORD_RESET) {
-            throw ValidationException::withMessages([
-                'current_password' => [__($status)],
-            ]);
+        // if ($status != Password::PASSWORD_RESET) {
+        //     throw ValidationException::withMessages([
+        //         'current_password' => [__($status)],
+        //     ]);
+        // }
+
+        if ($status === Password::PASSWORD_RESET) {
+            return response()->json(['message' => 'Password reset successful'], 200);
+        } else {
+            return response()->json(['message' => 'Failed to reset password'], 400);
         }
 
         return response()->json(['status' => __($status)]);

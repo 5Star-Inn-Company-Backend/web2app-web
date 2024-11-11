@@ -19,7 +19,7 @@ class ManageMemberController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { 
+    {
         return MemberResource::collection(User::where('user_id', auth()->id())->with('role')->get());
     }
 
@@ -61,10 +61,24 @@ class ManageMemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpsertMemberRequest $request, User $member)
-    {
-        $member->update($request->validated());
-        return new MemberResource($member);
+    public function update(UpsertMemberRequest $request, string $member)
+    {        
+        $userMember = User::where('id', $member)->first();
+        if(empty($userMember)){
+            return response()->json([
+                'error' => 'Member not found',
+               'status' => false
+            ]);
+        }
+        if($userMember->user_id !== auth()->id())
+        {
+            return response()->json([
+                'error' => 'You are not allowed to update this member',
+               'status' => false
+            ]);
+        }
+        $userMember->update($request->validated());
+        return new MemberResource($userMember);
     }
 
     /**
@@ -73,9 +87,23 @@ class ManageMemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $member)
+    public function destroy(string $member)
     {
-        $member->delete();
+        $userMember = User::where('id', $member)->first();
+        if(empty($userMember)){
+            return response()->json([
+                'error' => 'Member not found',
+               'status' => false
+            ]);
+        }
+        if($userMember->user_id !== auth()->id())
+        {
+            return response()->json([
+                'error' => 'You are not allowed to delete this member',
+               'status' => false
+            ]);
+        }
+        $userMember->delete();
         return ['Member deleted successfully'];
     }
 }
