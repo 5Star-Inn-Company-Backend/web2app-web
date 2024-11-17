@@ -30,7 +30,6 @@ class RegisteredUserController extends Controller
             'role_id' => ['nullable', 'sometimes', 'integer', 'exists:roles,id']
         ]);
 
-        
 
         $user = User::create([
             'name' => $request->name,
@@ -38,7 +37,6 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'role_id' => 1
         ]);
-
         event(new Registered($user));
 
         Auth::login($user);

@@ -16,10 +16,8 @@ class AuthenticatedSessionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(LoginRequest $request)
-    {
-         
+    {        
         $request->authenticate();
-        
         $request->session()->regenerate();
         $token = $request->user()->createToken($request->user()->name.'-AuthToken')->plainTextToken;
         return response()->json([
