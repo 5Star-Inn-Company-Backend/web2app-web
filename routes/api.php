@@ -4,6 +4,7 @@ use App\Http\Controllers\CreateAppController;
 use App\Http\Controllers\ManageMemberController;
 use App\Http\Controllers\MyController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,3 +27,16 @@ Route::apiResource('member', ManageMemberController::class)->middleware('auth:sa
 Route::post("app/convert/{app}", [MyController::class, "convert"])->middleware('auth:sanctum');
 
 Route::post("app", CreateAppController::class)->middleware('auth:sanctum');
+
+Route::get('/cache-all', function () {
+    // Cache configuration files
+    Artisan::call('config:cache');
+
+    // Cache routes
+    Artisan::call('route:cache');
+
+    // Cache views
+    Artisan::call('view:cache');
+
+    return 'All caches have been set.';
+});
