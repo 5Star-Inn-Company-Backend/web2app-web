@@ -29,14 +29,15 @@ Route::post("app/convert/{app}", [MyController::class, "convert"])->middleware('
 Route::post("app", CreateAppController::class)->middleware('auth:sanctum');
 
 Route::get('/cache-all', function () {
-    // Cache configuration files
+    // Clear caches
+    Artisan::call('config:clear');
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');
+
+    // Re-cache configurations, routes, and views
     Artisan::call('config:cache');
-
-    // Cache routes
     Artisan::call('route:cache');
-
-    // Cache views
     Artisan::call('view:cache');
 
-    return 'All caches have been set.';
+    return 'All caches have been cleared and reset.';
 });
