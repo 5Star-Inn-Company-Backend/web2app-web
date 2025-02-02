@@ -14,12 +14,23 @@ class AppResource extends JsonResource
      */
     public function toArray($request)
     {
-        return  [
-            'id' => $this->id,
-            'name' => $this->name,
-            'url' => $this->url,
-            'role' => $this->whenLoaded("role"),
-            'user' => $this->whenLoaded("user")
-        ];
+                return array_merge([
+                    'id' => $this->id,
+                    'name' => $this->name,
+                    'url' => $this->url,
+                    'description' => $this->description,
+                    'plan' => $this->plan,
+                    'role' => $this->whenLoaded("role"),
+                    'user' => $this->whenLoaded("user"),
+                    'branding' => $this->branding,
+                    'link_handling' => $this->link_handling,
+                    'interface' => $this->interface,
+                    'website_override' => $this->website_override,
+                    'permission' => $this->permission,
+                    'navigation' => $this->navigation,
+                    'notification' => $this->notification,
+                    'plugin' => $this->plugin,
+                    'build_setting' => $this->build_setting,
+                ]);
+            }
     }
-}

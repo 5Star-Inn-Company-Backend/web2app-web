@@ -10,11 +10,18 @@ class App extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'url',
-        'user_id',
-        'role_id',
+    protected $guarded = [];
+
+    protected $casts = [
+        'branding' => 'array',
+        'link_handling' => 'array',
+        'interface' => 'array',
+        'website_overide' => 'array',
+        'permission' => 'array',
+        'navigation' => 'array',
+        'notification' => 'array',
+        'plugin' => 'array',
+        'build_setting' => 'array',
     ];
 
 

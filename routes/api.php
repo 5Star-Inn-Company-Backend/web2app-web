@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppsController;
 use App\Http\Controllers\CreateAppController;
 use App\Http\Controllers\ManageMemberController;
 use App\Http\Controllers\MyController;
@@ -26,7 +27,7 @@ Route::apiResource('member', ManageMemberController::class)->middleware('auth:sa
 
 Route::post("app/convert/{app}", [MyController::class, "convert"])->middleware('auth:sanctum');
 
-Route::post("app", CreateAppController::class)->middleware('auth:sanctum');
+Route::apiResource("app", AppsController::class)->middleware('auth:sanctum');
 
 Route::get('/cache-all', function () {
     // Clear caches
@@ -35,9 +36,9 @@ Route::get('/cache-all', function () {
     Artisan::call('view:clear');
 
     // Re-cache configurations, routes, and views
-    Artisan::call('config:cache');
-    Artisan::call('route:cache');
-    Artisan::call('view:cache');
+    //Artisan::call('config:cache');
+    //Artisan::call('route:cache');
+    //Artisan::call('view:cache');
 
     return 'All caches have been cleared and reset.';
 });
