@@ -10,6 +10,7 @@ use App\Models\App;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class AppsController extends Controller
 {
@@ -82,6 +83,10 @@ class AppsController extends Controller
      */
     public function update(UpsertAppRequest $request, App $app):Response
     {
+        $user = Auth::user();
+        if($app->user_id != $user->id){
+            return response()->json(['error' => 'Unauthorized'], Response::HTTP_UNAUTHORIZED);
+        }
         $this->upsert($request, $app);
         return response()->noContent();
     }
