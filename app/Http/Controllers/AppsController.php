@@ -27,7 +27,8 @@ class AppsController extends Controller
      */
     public function index():AnonymousResourceCollection
     {
-        return AppResource::collection(App::all());
+        $user = Auth::user();
+        return AppResource::collection(App::where('user_id', $user->id)->get());
     }
 
     /**
