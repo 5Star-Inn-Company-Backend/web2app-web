@@ -31,9 +31,9 @@ Route::apiResource("app", AppsController::class)->middleware('auth:sanctum');
 
 Route::get('/cache-all', function () {
     // Clear caches
-    Artisan::call('config:clear');
-    Artisan::call('route:clear');
-    Artisan::call('view:clear');
+    // Artisan::call('config:clear');
+    // Artisan::call('route:clear');
+    // Artisan::call('view:clear');
 
     // Re-cache configurations, routes, and views
     //Artisan::call('config:cache');

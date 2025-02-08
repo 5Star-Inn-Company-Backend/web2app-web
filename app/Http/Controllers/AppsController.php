@@ -9,6 +9,7 @@ use App\Http\Resources\AppResource;
 use App\Models\App;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,9 +25,9 @@ class AppsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index():AnonymousResourceCollection
     {
-        //
+        return AppResource::collection(App::all());
     }
 
     /**
