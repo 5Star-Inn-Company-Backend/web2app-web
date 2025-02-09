@@ -14,23 +14,26 @@ class AppResource extends JsonResource
      */
     public function toArray($request)
     {
-                return array_merge([
-                    'id' => $this->id,
-                    'name' => $this->name,
-                    'url' => $this->url,
-                    'description' => $this->description,
-                    'plan' => $this->plan,
-                    'role' => $this->whenLoaded("role"),
-                    'user' => $this->whenLoaded("user"),
-                    'branding' => $this->branding,
-                    'link_handling' => $this->link_handling,
-                    'interface' => $this->interface,
-                    'website_override' => $this->website_override,
-                    'permission' => $this->permission,
-                    'navigation' => $this->navigation,
-                    'notification' => $this->notification,
-                    'plugin' => $this->plugin,
-                    'build_setting' => $this->build_setting,
-                ]);
-            }
+        return [
+            'data' => [
+                'id' => $this->id,
+                'name' => $this->name,
+                'url' => $this->url,
+                'description' => $this->description,
+                'plan' => $this->plan,
+                'role' => $this->whenLoaded("role"),
+                'user' => $this->whenLoaded("user"),
+                'branding' => $this->branding = null,
+                'link_handling' => $this->link_handling = null,
+                'interface' => $this->interface = null,
+                'website_override' => $this->website_override = null,
+                'permission' => $this->permission = null,
+                'navigation' => $this->navigation = null,
+                'notification' => $this->notification = null,
+                'plugin' => $this->plugin = null,
+                'build_setting' => $this->build_setting = null,
+            ],
+        ];
+          }  
     }
+                
