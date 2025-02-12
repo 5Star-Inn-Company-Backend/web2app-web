@@ -27,8 +27,8 @@ class UpsertAppRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255', Rule::unique("apps", 'name')->ignore($this->app)],
             'url' => ['required', 'url', Rule::unique("apps", 'url')->ignore($this->app)],
-            'plan' => ['required', 'string'],
-            'description' => ['required', 'string'],
+            'plan' => ['nullable', 'sometimes', 'string'],
+            'description' => ['nullable', 'sometimes', 'string'],
             'branding' => ['nullable', 'sometimes', 'array'],
             'branding.app_icon' => ['nullable', 'sometimes', 'url'],
             'branding.splash_screen' => ['nullable', 'sometimes', 'string'],
