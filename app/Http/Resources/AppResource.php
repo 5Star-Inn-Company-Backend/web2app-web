@@ -31,6 +31,7 @@ class AppResource extends JsonResource
                 'notification' => $this->notification = null,
                 'plugin' => $this->plugin = null,
                 'build_setting' => $this->build_setting = null,
+                'last_saved' => $this->created_at->diffForHumans()
         ];
           }  
     }
