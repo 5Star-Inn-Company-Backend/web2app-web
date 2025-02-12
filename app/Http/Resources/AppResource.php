@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Auth;
 
 class AppResource extends JsonResource
 {
@@ -14,6 +15,10 @@ class AppResource extends JsonResource
      */
     public function toArray($request)
     {
+
+        $user = Auth::user();
+        $member_count = $user->members()->count();
+
         return [
                 'id' => $this->id,
                 'name' => $this->name,
@@ -31,7 +36,8 @@ class AppResource extends JsonResource
                 'notification' => $this->notification = null,
                 'plugin' => $this->plugin = null,
                 'build_setting' => $this->build_setting = null,
-                'last_saved' => $this->created_at->diffForHumans()
+                'last_saved' => $this->created_at->diffForHumans(),
+                'member_count' => $member_count = 0,
         ];
           }  
     }

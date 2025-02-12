@@ -57,6 +57,16 @@ class User extends Authenticatable
         return $this->attributes['plain_password'];
     }
 
+    public function parent()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function members()
+    {
+        return $this->hasMany(User::class, 'user_id');
+    }
+
 
 
 
