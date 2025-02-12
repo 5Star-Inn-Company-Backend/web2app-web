@@ -15,7 +15,6 @@ class AppResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'data' => [
                 'id' => $this->id,
                 'name' => $this->name,
                 'url' => $this->url,
@@ -32,7 +31,6 @@ class AppResource extends JsonResource
                 'notification' => $this->notification = null,
                 'plugin' => $this->plugin = null,
                 'build_setting' => $this->build_setting = null,
-            ],
         ];
           }  
     }
